@@ -13,6 +13,10 @@ namespace Base.Api.Application.Interfaces.UnitOfWork
 
         IProductWriteRepository ProductWriteRepository();
 
+        ICategoryReadRepository CategoryReadRepository();
+
+        ICategoryWriteRepository CategoryWriteRepository();
+
         Task<int> SaveChangesAsync();
     }
 }

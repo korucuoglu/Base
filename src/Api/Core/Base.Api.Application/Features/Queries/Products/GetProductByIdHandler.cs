@@ -6,6 +6,7 @@ using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Interfaces.UnitOfWork;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Base.Api.Application.Features.Queries.Products;
 
@@ -24,10 +25,10 @@ public class GetProductByIdHandler : IRequestHandler<GetProductById, Response<Pr
 
     public async Task<Response<ProductDto>> Handle(GetProductById request, CancellationToken cancellationToken)
     {
-        var product = await _unitOfWork.ProductReadRepository().FindAsync(_hashService.Decode(request.Id));
+        var entity = _unitOfWork.ProductReadRepository().Where(x=> x.Id == _hashService.Decode(request.Id));
 
-        var productDto = _mapper.Map<ProductDto>(product);
+        var dto = await _mapper.ProjectTo<ProductDto>(entity).FirstOrDefaultAsync();
 
-        return Response<ProductDto>.Success(productDto, 200);
+        return Response<ProductDto>.Success(dto, 200);
     }
 }

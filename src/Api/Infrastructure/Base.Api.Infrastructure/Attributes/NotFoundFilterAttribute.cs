@@ -32,7 +32,7 @@ namespace Base.Api.Infrastructure.Attributes
             if (typeof(TEntity) is IAuthRequired entity)
             {
                 return _unitOfWork.ReadRepository<TEntity>()
-                    .Any(x => x.Id == decodeId && entity.UserId == _identityService.GetUserDecodeId);
+                    .Any(x => x.Id == decodeId && entity.ApplicationUserId == _identityService.GetUserDecodeId);
             }
 
             return _unitOfWork.ReadRepository<TEntity>().Any(x => x.Id == decodeId);

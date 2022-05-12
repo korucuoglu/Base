@@ -23,10 +23,10 @@ public class GetAllProductHandler : IRequestHandler<GetAllProduct, Response<List
 
     public async Task<Response<List<ProductDto>>> Handle(GetAllProduct request, CancellationToken cancellationToken)
     {
-        var product = _unitOfWork.ProductReadRepository().GetAllQueryableAsync();
+        var entities = _unitOfWork.ProductReadRepository().GetAllQueryableAsync();
 
-        var productDto = await _mapper.ProjectTo<ProductDto>(product).ToListAsync();
+        var dtos = await _mapper.ProjectTo<ProductDto>(entities).ToListAsync();
 
-        return Response<List<ProductDto>>.Success(data: productDto, statusCode: 200);
+        return Response<List<ProductDto>>.Success(data: dtos, statusCode: 200);
     }
 }

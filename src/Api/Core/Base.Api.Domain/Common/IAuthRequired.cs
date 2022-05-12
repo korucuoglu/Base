@@ -2,5 +2,5 @@
 
 public interface IAuthRequired
 {
-    public int UserId { get; set; }
+    public int ApplicationUserId { get; set; }
 }

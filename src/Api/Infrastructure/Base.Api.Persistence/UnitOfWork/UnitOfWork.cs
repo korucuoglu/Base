@@ -34,5 +34,15 @@ namespace Base.Api.Persistence.UnitOfWork
         {
             return new ProductWriteRepository(_context);
         }
+
+        public ICategoryReadRepository CategoryReadRepository()
+        {
+            return new CategoryReadRepository(_context);
+        }
+
+        public ICategoryWriteRepository CategoryWriteRepository()
+        {
+            return new CategoryWriteRepository(_context);
+        }
     }
 }

@@ -20,13 +20,5 @@ public abstract class BaseEntityConfiguration<T> : IEntityTypeConfiguration<T> w
             builder.Property(nameof(updateableEntity.UpdatedDate))
                 .HasColumnName("updated_date");
         }
-
-        if (typeof(T) is IAuthRequired authRequiredEntity)
-        {
-            builder.Property(nameof(authRequiredEntity.UserId))
-                .HasColumnName("user_id")
-                .HasColumnType("int4")
-                .IsRequired();
-        }
     }
 }
