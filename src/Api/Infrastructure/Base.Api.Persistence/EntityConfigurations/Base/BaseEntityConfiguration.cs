@@ -1,0 +1,32 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Base.Api.Domain.Common;
+
+namespace Base.Api.Persistence.EntityConfigurations;
+
+public abstract class BaseEntityConfiguration<T> : IEntityTypeConfiguration<T> where T : BaseEntity
+{
+    public virtual void Configure(EntityTypeBuilder<T> builder)
+    {
+        builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id).HasColumnName("id").ValueGeneratedOnAdd().UseIdentityColumn();
+
+        builder.Property(e => e.CreatedDate)
+          .HasColumnName("created_date")
+          .IsRequired();
+
+        if (typeof(T) is IUpdateable updateableEntity)
+        {
+            builder.Property(nameof(updateableEntity.UpdatedDate))
+                .HasColumnName("updated_date");
+        }
+
+        if (typeof(T) is IAuthRequired authRequiredEntity)
+        {
+            builder.Property(nameof(authRequiredEntity.UserId))
+                .HasColumnName("user_id")
+                .HasColumnType("int4")
+                .IsRequired();
+        }
+    }
+}

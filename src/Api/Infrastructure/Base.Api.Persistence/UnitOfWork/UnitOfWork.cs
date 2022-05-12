@@ -1,0 +1,38 @@
+﻿using Base.Api.Application.Interfaces.Repositories;
+using Base.Api.Application.Interfaces.UnitOfWork;
+using Base.Api.Domain.Common;
+using Base.Api.Persistence.Context;
+using Base.Api.Persistence.Repositories;
+using System.Threading.Tasks;
+
+namespace Base.Api.Persistence.UnitOfWork
+{
+    public class UnitOfWork : IUnitOfWork
+    {
+        private readonly ApplicationDbContext _context;
+
+        public UnitOfWork(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public Task<int> SaveChangesAsync()
+        {
+            return _context.SaveChangesAsync();
+        }
+
+        public IReadRepository<T> ReadRepository<T>() where T : BaseEntity => new ReadRepository<T>(_context);
+
+        public async ValueTask DisposeAsync() => await _context.DisposeAsync();
+
+        public IProductReadRepository ProductReadRepository()
+        {
+            return new ProductReadRepository(_context);
+        }
+
+        public IProductWriteRepository ProductWriteRepository()
+        {
+            return new ProductWriteRepository(_context);
+        }
+    }
+}
