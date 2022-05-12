@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Base.Api.Application.Dtos.Wrappers;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
-using Base.Api.Application.Dtos.Wrappers;
 
 namespace Base.Api.Application.Middlewares
 {

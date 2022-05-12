@@ -19,6 +19,7 @@ namespace Base.Api.Application.Dtos.Wrappers
         {
             return new Response<T> { Value = default, StatusCode = statusCode, IsSuccessful = true };
         }
+
         public static Response<T> Success(T data, int statusCode = 0)
         {
             return new Response<T> { Value = data, StatusCode = statusCode, IsSuccessful = true };

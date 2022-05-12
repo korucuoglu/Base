@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.WebUtilities;
-using Base.Api.Application.Const;
+﻿using Base.Api.Application.Const;
 using Base.Api.Application.Dtos;
 using Base.Api.Application.Dtos.User;
 using Base.Api.Application.Dtos.Wrappers;
@@ -8,6 +6,8 @@ using Base.Api.Application.Identity;
 using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Services;
 using Base.Common.Event;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.WebUtilities;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -182,7 +182,6 @@ public class UserService : IUserService
         }
 
         user.UserName = model.UserName;
-
 
         var message = CustomResponseMessages.UserInfoChangedConfirm;
 

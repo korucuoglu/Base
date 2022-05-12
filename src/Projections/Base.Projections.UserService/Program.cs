@@ -1,5 +1,5 @@
-using Microsoft.Extensions.Options;
 using Base.Projections.UserService;
+using Microsoft.Extensions.Options;
 
 IHost host = Host.CreateDefaultBuilder(args).
     ConfigureServices((hostContext, services) =>

@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using Base.Api.Application.Const;
-using Base.Api.Application.Dtos;
+﻿using Base.Api.Application.Const;
 using Base.Api.Application.Identity;
 using Base.Api.Application.Interfaces.Services;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -41,7 +40,6 @@ namespace Base.Api.Infrastructure.Services
                 claims: authClaims,
                 signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                 );
-
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }

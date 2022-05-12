@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Base.Api.Application.Interfaces.Services;
+﻿using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Services;
+using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
 namespace Base.Api.Infrastructure.Services

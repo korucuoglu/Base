@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Base.Api.Application.Identity;
+﻿using Base.Api.Application.Identity;
+using Base.Api.Application.Services;
 using Base.Api.Domain.Common;
 using Base.Api.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Base.Api.Application.Services;
 
 namespace Base.Api.Persistence.Context;
 
@@ -41,7 +41,6 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
     {
         foreach (var changedEntity in ChangeTracker.Entries<BaseEntity>())
         {
-
             if (changedEntity.State == EntityState.Added)
             {
                 changedEntity.Entity.CreatedDate = DateTime.UtcNow;
@@ -54,7 +53,6 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
 
             if (changedEntity.State == EntityState.Modified)
             {
-
                 if (changedEntity.Entity is IUpdateable entity)
                 {
                     Entry(changedEntity.Entity).Property(x => x.CreatedDate).IsModified = false;

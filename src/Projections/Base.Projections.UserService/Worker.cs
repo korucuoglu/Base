@@ -1,7 +1,7 @@
-using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
 using Base.Common.Const;
 using Base.Common.Event;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 using System.Text;
 using System.Text.Json;
 

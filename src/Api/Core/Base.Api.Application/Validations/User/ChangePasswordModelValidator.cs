@@ -1,5 +1,5 @@
-﻿using FluentValidation;
-using Base.Api.Application.Dtos.User;
+﻿using Base.Api.Application.Dtos.User;
+using FluentValidation;
 
 namespace Base.Api.Application.Validations.User;
 

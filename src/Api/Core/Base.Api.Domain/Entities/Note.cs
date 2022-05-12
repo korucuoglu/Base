@@ -3,7 +3,7 @@ using System;
 
 namespace Base.Api.Domain.Entities;
 
-public class Note: BaseEntity, IUpdateable, IAuthRequired
+public class Note : BaseEntity, IUpdateable, IAuthRequired
 {
     public string Title { get; set; }
     public string Content { get; set; }

@@ -1,14 +1,14 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
-using Base.Api.Application.Interfaces;
+﻿using Base.Api.Application.Interfaces;
 using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Services;
 using Base.Api.Infrastructure.Attributes;
 using Base.Api.Infrastructure.Services;
 using Base.Api.Infrastructure.Services.Redis;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 namespace Base.Api.Infrastructure

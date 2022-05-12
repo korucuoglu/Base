@@ -12,7 +12,5 @@ public class CategoryEntityConfiguration : BaseEntityConfiguration<Category>
         builder.ToTable("categories");
         builder.Property(x => x.Title).HasColumnName("title").IsRequired();
         builder.HasIndex(x => new { x.ApplicationUserId, x.Title }).IsUnique(true);
-      
-
     }
 }

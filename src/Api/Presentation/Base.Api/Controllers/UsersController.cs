@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Base.Api.Application.Dtos;
+﻿using Base.Api.Application.Dtos;
 using Base.Api.Application.Dtos.User;
 using Base.Api.Application.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace Base.Api.Controllers;

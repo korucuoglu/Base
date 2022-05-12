@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Base.Api.Domain.Entities;
 
-public class Category: BaseEntity, IUpdateable, IAuthRequired
+public class Category : BaseEntity, IUpdateable, IAuthRequired
 {
     public string Title { get; set; }
     public DateTime? UpdatedDate { get; set; }

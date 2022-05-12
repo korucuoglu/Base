@@ -1,5 +1,5 @@
-﻿using RabbitMQ.Client;
-using Base.Common.Const;
+﻿using Base.Common.Const;
+using RabbitMQ.Client;
 
 namespace Base.Projections.UserService
 {

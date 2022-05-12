@@ -1,5 +1,5 @@
-﻿using FluentValidation;
-using Base.Api.Application.Dtos.Categories;
+﻿using Base.Api.Application.Dtos.Categories;
+using FluentValidation;
 
 namespace Base.Api.Application.Validations.Categories;
 

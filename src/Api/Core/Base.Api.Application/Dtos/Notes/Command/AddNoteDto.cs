@@ -1,5 +1,5 @@
-﻿using MediatR;
-using Base.Api.Application.Dtos.Wrappers;
+﻿using Base.Api.Application.Dtos.Wrappers;
+using MediatR;
 
 namespace Base.Api.Application.Dtos.Notes;
 

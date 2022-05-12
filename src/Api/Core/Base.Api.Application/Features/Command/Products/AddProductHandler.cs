@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using MediatR;
 using Base.Api.Application.Dtos.Products;
 using Base.Api.Application.Dtos.Wrappers;
 using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Interfaces.UnitOfWork;
 using Base.Api.Domain.Entities;
+using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 

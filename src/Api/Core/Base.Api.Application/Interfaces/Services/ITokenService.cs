@@ -1,5 +1,4 @@
-﻿using Base.Api.Application.Dtos;
-using Base.Api.Application.Identity;
+﻿using Base.Api.Application.Identity;
 
 namespace Base.Api.Application.Interfaces.Services
 {

@@ -1,10 +1,10 @@
-﻿using MediatR;
+﻿using Base.Api.Application.Dtos.Categories;
 using Base.Api.Application.Dtos.Wrappers;
 using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Interfaces.UnitOfWork;
+using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using Base.Api.Application.Dtos.Categories;
 
 namespace Base.Api.Application.Features.Queries.Categories;
 
@@ -13,7 +13,7 @@ public class DeleteCategoryHandler : IRequestHandler<DeleteCategoryById, Respons
     private readonly IUnitOfWork _unitOfWork;
     private readonly HashService _hashService;
 
-    public DeleteCategoryHandler(IUnitOfWork unitOfWork, HashService hashService
+    public DeleteCategoryHandler(IUnitOfWork unitOfWork, HashService hashService)
     {
         _unitOfWork = unitOfWork;
         _hashService = hashService;

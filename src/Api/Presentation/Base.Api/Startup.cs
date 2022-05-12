@@ -1,16 +1,16 @@
-﻿using FluentValidation.AspNetCore;
+﻿using Base.Api.Application;
+using Base.Api.Application.Middlewares;
+using Base.Api.Application.Validations.Products;
+using Base.Api.Infrastructure;
+using Base.Api.Infrastructure.Attributes;
+using Base.Api.Persistence;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Base.Api.Application;
-using Base.Api.Application.Middlewares;
-using Base.Api.Application.Validations.Products;
-using Base.Api.Infrastructure;
-using Base.Api.Infrastructure.Attributes;
-using Base.Api.Persistence;
 
 namespace Base.Api
 {

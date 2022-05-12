@@ -1,5 +1,5 @@
-﻿using FluentValidation;
-using Base.Api.Application.Dtos.Notes;
+﻿using Base.Api.Application.Dtos.Notes;
+using FluentValidation;
 
 namespace Base.Api.Application.Validations.Notes;
 

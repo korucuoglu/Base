@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Base.Api.Application.Dtos.Wrappers;
+﻿using Base.Api.Application.Dtos.Wrappers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Base.Api.Controllers;
 

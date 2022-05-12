@@ -23,7 +23,7 @@ public class GeneralMapping : Profile
         CreateMap<UpdateProductDto, Product>().
                ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Decode(src.Id)));
 
-        #endregion
+        #endregion Products
 
         #region Categories
 
@@ -35,7 +35,7 @@ public class GeneralMapping : Profile
         CreateMap<UpdateCategoryDto, Category>().
                ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Decode(src.Id)));
 
-        #endregion
+        #endregion Categories
 
         #region Notes
 
@@ -48,6 +48,6 @@ public class GeneralMapping : Profile
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Decode(src.Id)))
                 .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => hashService.Decode(src.CategoryId)));
 
-        #endregion
+        #endregion Notes
     }
 }

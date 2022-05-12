@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Base.Common.Const;
+using Microsoft.Extensions.Configuration;
 using RabbitMQ.Client;
-using Base.Common.Const;
 using System;
 
 namespace Base.Api.Infrastructure.Services

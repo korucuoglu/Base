@@ -1,8 +1,8 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Base.Api.Application.Dtos.Products;
+﻿using Base.Api.Application.Dtos.Products;
 using Base.Api.Domain.Entities;
 using Base.Api.Infrastructure.Attributes;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace Base.Api.Controllers;

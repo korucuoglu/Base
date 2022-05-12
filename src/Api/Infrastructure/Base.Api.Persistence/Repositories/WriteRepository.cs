@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Base.Api.Application.Interfaces.Repositories;
+﻿using Base.Api.Application.Interfaces.Repositories;
 using Base.Api.Domain.Common;
 using Base.Api.Persistence.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;

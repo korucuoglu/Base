@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Base.Api.Domain.Common;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Base.Api.Domain.Common;
 
 namespace Base.Api.Persistence.EntityConfigurations;
 

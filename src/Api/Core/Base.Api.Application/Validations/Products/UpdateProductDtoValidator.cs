@@ -1,5 +1,5 @@
-﻿using FluentValidation;
-using Base.Api.Application.Dtos.Products;
+﻿using Base.Api.Application.Dtos.Products;
+using FluentValidation;
 
 namespace Base.Api.Application.Validations.Products;
 

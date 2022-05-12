@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using MediatR;
+using Base.Api.Application.Dtos.Categories;
 using Base.Api.Application.Dtos.Wrappers;
 using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Interfaces.UnitOfWork;
+using Base.Api.Application.Services;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
-using Base.Api.Application.Dtos.Categories;
-using Base.Api.Application.Services;
-using Microsoft.EntityFrameworkCore;
 
 namespace Base.Api.Application.Features.Queries.Categories;
 

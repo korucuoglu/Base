@@ -1,13 +1,12 @@
 ﻿using AutoMapper;
-using MediatR;
+using Base.Api.Application.Dtos.Notes;
 using Base.Api.Application.Dtos.Wrappers;
 using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Interfaces.UnitOfWork;
 using Base.Api.Domain.Entities;
+using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using Base.Api.Application.Dtos.Categories;
-using Base.Api.Application.Dtos.Notes;
 
 namespace Base.Api.Application.Features.Command.Notes
 {

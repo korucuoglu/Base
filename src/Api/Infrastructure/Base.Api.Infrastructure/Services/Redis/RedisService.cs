@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
-using Base.Api.Application.Interfaces;
+﻿using Base.Api.Application.Interfaces;
+using Microsoft.Extensions.Configuration;
 using StackExchange.Redis;
 using System.Threading.Tasks;
 

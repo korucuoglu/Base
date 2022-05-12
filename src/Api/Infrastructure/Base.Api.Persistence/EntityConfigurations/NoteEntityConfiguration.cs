@@ -16,7 +16,5 @@ public class NoteEntityConfiguration : BaseEntityConfiguration<Note>
         builder.HasIndex(x => new { x.ApplicationUserId, x.Title }).IsUnique(true);
 
         builder.HasOne(x => x.Category).WithMany(x => x.Notes).HasForeignKey(x => x.CategoryId).OnDelete(DeleteBehavior.NoAction);
-      
-
     }
 }

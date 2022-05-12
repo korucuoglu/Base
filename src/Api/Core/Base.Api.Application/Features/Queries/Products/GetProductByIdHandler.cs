@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using MediatR;
 using Base.Api.Application.Dtos.Products;
 using Base.Api.Application.Dtos.Wrappers;
 using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Interfaces.UnitOfWork;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace Base.Api.Application.Features.Queries.Products;
 
@@ -25,7 +25,7 @@ public class GetProductByIdHandler : IRequestHandler<GetProductById, Response<Pr
 
     public async Task<Response<ProductDto>> Handle(GetProductById request, CancellationToken cancellationToken)
     {
-        var entity = _unitOfWork.ProductReadRepository().Where(x=> x.Id == _hashService.Decode(request.Id));
+        var entity = _unitOfWork.ProductReadRepository().Where(x => x.Id == _hashService.Decode(request.Id));
 
         var dto = await _mapper.ProjectTo<ProductDto>(entity).FirstOrDefaultAsync();
 

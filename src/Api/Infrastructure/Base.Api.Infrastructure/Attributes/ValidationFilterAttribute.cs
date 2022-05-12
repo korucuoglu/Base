@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Base.Api.Application.Dtos.Wrappers;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Base.Api.Application.Dtos.Wrappers;
 using System.Linq;
 using System.Threading.Tasks;
 

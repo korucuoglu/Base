@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Base.Api.Application.Identity;
+using Base.Api.Application.Interfaces.UnitOfWork;
+using Base.Api.Persistence.Context;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Base.Api.Application.Identity;
-using Base.Api.Application.Interfaces.UnitOfWork;
-using Base.Api.Persistence.Context;
 
 namespace Base.Api.Persistence
 {

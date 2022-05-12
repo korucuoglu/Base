@@ -1,9 +1,9 @@
+using Base.Api.Persistence.Context;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Base.Api.Persistence.Context;
 using System;
 
 namespace Base.Api
