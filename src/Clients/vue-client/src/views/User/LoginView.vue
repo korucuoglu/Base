@@ -43,14 +43,15 @@
 </template>
 
 <script>
+import UserService from '@/services/user'
 export default {
   data: () => ({
     userData: { username: '', password: '' },
   }),
 
   methods: {
-    async onSubmit() {
-      this.$store.dispatch('users/login', this.userData)
+    onSubmit() {
+      UserService.login(this.userData)
     },
   },
 }

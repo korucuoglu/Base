@@ -62,15 +62,18 @@ export default {
   computed: {
     ...mapGetters({
       currentUser: 'users/currentUser',
+      isAuthenticated: 'users/isAuthenticated',
     }),
 
     activeButton() {
-      if (this.userData.password) {
-        if (
-          this.userData.email !== this.currentUser.email ||
-          this.userData.username !== this.currentUser.username
-        ) {
-          return true
+      if (this.isAuthenticated) {
+        if (this.userData.password) {
+          if (
+            this.userData.email !== this.currentUser.email ||
+            this.userData.username !== this.currentUser.username
+          ) {
+            return true
+          }
         }
       }
       return false
