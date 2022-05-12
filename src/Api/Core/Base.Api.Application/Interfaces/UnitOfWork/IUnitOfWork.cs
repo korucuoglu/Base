@@ -17,6 +17,10 @@ namespace Base.Api.Application.Interfaces.UnitOfWork
 
         ICategoryWriteRepository CategoryWriteRepository();
 
+        INoteReadRepository NoteReadRepository();
+
+        INoteWriteRepository NoteWriteRepository();
+
         Task<int> SaveChangesAsync();
     }
 }

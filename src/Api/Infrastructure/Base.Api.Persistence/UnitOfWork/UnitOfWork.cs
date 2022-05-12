@@ -44,5 +44,15 @@ namespace Base.Api.Persistence.UnitOfWork
         {
             return new CategoryWriteRepository(_context);
         }
+
+        public INoteReadRepository NoteReadRepository()
+        {
+            return new NoteReadRepository(_context);
+        }
+
+        public INoteWriteRepository NoteWriteRepository()
+        {
+            return new NoteWriteRepository(_context);
+        }
     }
 }

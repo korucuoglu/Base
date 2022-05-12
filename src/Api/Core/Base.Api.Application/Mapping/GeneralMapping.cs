@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Base.Api.Application.Dtos.Categories;
+using Base.Api.Application.Dtos.Notes;
 using Base.Api.Application.Dtos.Products;
 using Base.Api.Application.Interfaces.Services;
 using Base.Api.Domain.Entities;
@@ -33,6 +34,19 @@ public class GeneralMapping : Profile
 
         CreateMap<UpdateCategoryDto, Category>().
                ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Decode(src.Id)));
+
+        #endregion
+
+        #region Notes
+
+        CreateMap<Note, NoteDto>().
+               ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Encode(src.Id)));
+
+        CreateMap<AddNoteDto, Note>().ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => hashService.Decode(src.CategoryId)));
+
+        CreateMap<UpdateNoteDto, Note>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Decode(src.Id)))
+                .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => hashService.Decode(src.CategoryId)));
 
         #endregion
     }

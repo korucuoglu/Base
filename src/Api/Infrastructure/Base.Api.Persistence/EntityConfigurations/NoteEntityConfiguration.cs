@@ -15,7 +15,7 @@ public class NoteEntityConfiguration : BaseEntityConfiguration<Note>
         builder.Property(x => x.Content).HasColumnName("content").IsRequired();
         builder.HasIndex(x => new { x.ApplicationUserId, x.Title }).IsUnique(true);
 
-        builder.HasOne(x => x.Category).WithMany(x => x.Notes).HasForeignKey(x => x.CategoryId);
+        builder.HasOne(x => x.Category).WithMany(x => x.Notes).HasForeignKey(x => x.CategoryId).OnDelete(DeleteBehavior.NoAction);
       
 
     }
