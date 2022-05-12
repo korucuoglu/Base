@@ -10,4 +10,7 @@ public class Note: BaseEntity, IUpdateable, IAuthRequired
     public bool IsPublic { get; set; }
     public DateTime? UpdatedDate { get; set; }
     public int ApplicationUserId { get; set; }
+
+    public int CategoryId { get; set; }
+    public Category Category { get; set; }
 }

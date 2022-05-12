@@ -16,6 +16,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
     private readonly IIdentityService _identityService;
 
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Note> Notes { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IIdentityService identityService) : base(options)
     {
