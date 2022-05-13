@@ -33,14 +33,14 @@ public class UserService : IUserService
 
     private Response<NoContent> SendValidateMail(ApplicationUser user, string link)
     {
-        MailSendEvent userCreatedEvent = new()
+        MailSendEvent mailSendEvent = new()
         {
             MailAdress = user.Email,
             Message = $"<p>Mail adresini doğrulamak için <a href='{link}'>tıkla</a></p>",
             Subject = "Mail Onaylama"
         };
 
-        _rabbitMQPublisher.Publish(userCreatedEvent);
+        _rabbitMQPublisher.Publish(mailSendEvent);
 
         return Response<NoContent>.Success($"{user.Email} mail adresine doğrulama maili gönderildi", 201);
     }

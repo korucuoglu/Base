@@ -14,11 +14,11 @@ namespace Base.Api.Infrastructure.Services
             _rabbitMQClientService = rabbitMQClientService;
         }
 
-        public void Publish(MailSendEvent userCreatedEvent)
+        public void Publish(MailSendEvent mailSendEvent)
         {
             var channel = _rabbitMQClientService.Connect();
 
-            var bodyString = JsonSerializer.Serialize(userCreatedEvent);
+            var bodyString = JsonSerializer.Serialize(mailSendEvent);
 
             var bodyByte = Encoding.UTF8.GetBytes(bodyString);
 
