@@ -4,6 +4,8 @@ using Base.Api.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -13,9 +15,11 @@ namespace Base.Api.Persistence.Repositories
     public class ReadRepository<TEntity> : IReadRepository<TEntity> where TEntity : BaseEntity
     {
         private readonly DbSet<TEntity> _table;
+        private readonly ApplicationDbContext _context;
 
         public ReadRepository(ApplicationDbContext context)
         {
+            _context = context;
             _table = context.Set<TEntity>();
         }
 
@@ -72,5 +76,27 @@ namespace Base.Api.Persistence.Repositories
 
             return query;
         }
+
+        public List<T> RawSqlQuery<T>(string query, Func<DbDataReader, T> map)
+        {
+            using var command = _context.Database.GetDbConnection().CreateCommand();
+            command.CommandText = query;
+            command.CommandType = CommandType.Text;
+
+            _context.Database.OpenConnection();
+
+            using var result = command.ExecuteReader();
+            var entities = new List<T>();
+
+            while (result.Read())
+            {
+                entities.Add(map(result));
+            }
+
+            return entities;
+
+        }
+
+       
     }
 }

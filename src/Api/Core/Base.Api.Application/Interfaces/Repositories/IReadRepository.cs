@@ -1,6 +1,7 @@
 ﻿using Base.Api.Domain.Common;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -20,4 +21,7 @@ public interface IReadRepository<TEntity> where TEntity : BaseEntity
     Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate, bool tracking = false);
 
     Task<TEntity> FindAsync(int id, bool tracking = false);
+
+    List<T> RawSqlQuery<T>(string query, Func<DbDataReader, T> map);
+    
 }
