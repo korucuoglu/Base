@@ -1,18 +1,23 @@
 <template>
-  <ProductList :items="productList" />
+  <NoteList :items="items" />
 </template>
 
 <script>
-import ProductList from '@/components/Products/list'
+import NoteList from '@/components/Notes/list'
+import NoteService from '@/services/note'
 export default {
   name: 'Home',
   components: {
-    ProductList,
+    NoteList,
   },
   data() {
     return {
-      productList: [],
+      items: [],
     }
+  },
+
+  async mounted() {
+    this.items = await NoteService.getPublicNotes()
   },
 }
 </script>

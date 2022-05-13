@@ -1,19 +1,19 @@
 <template>
   <div class="container mt-5">
-    <h1 class="text-center">Ürün Listesi</h1>
+    <h1 class="text-center">Public Notes</h1>
     <br />
     <div class="row">
-      <ProductItem v-for="item in items" :key="item" :item="item" />
+      <NotesItem v-for="item in items" :key="item.id" :item="item" />
     </div>
   </div>
 </template>
 
 <script>
-import ProductItem from '@/components/Products/item'
+import NotesItem from '@/components/Notes/item'
 export default {
   name: 'Home',
   components: {
-    ProductItem,
+    NotesItem,
   },
 
   props: ['items'],
