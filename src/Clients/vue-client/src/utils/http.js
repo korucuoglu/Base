@@ -1,6 +1,5 @@
 import axios from 'axios'
 import store from '@/store'
-import router from '@/router'
 import { useToast, TYPE } from 'vue-toastification'
 
 export const http = axios.create({
@@ -28,7 +27,7 @@ http.interceptors.response.use(
     }
 
     if (response.status === 204) {
-      useToast()('Başarılı', {
+      useToast()('successful', {
         type: TYPE.SUCCESS,
       })
     }
@@ -42,13 +41,16 @@ http.interceptors.response.use(
     }
 
     if (error.response.status === 401) {
-      useToast()('Lütfen giriş yapınız', {
-        type: TYPE.ERROR,
-      })
       if (store.getters['users/isAuthenticated']) {
-        store.commit('users/setUser', null)
+        useToast()('Your session has expired. Please login again.', {
+          type: TYPE.ERROR,
+        })
+      } else {
+        useToast()('Please login.', {
+          type: TYPE.ERROR,
+        })
       }
-      router.push({ name: 'LoginView' })
+      store.commit('users/logout')
     }
 
     return Promise.reject(error)
