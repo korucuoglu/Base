@@ -21,7 +21,7 @@ public class NotesController : BaseApiController
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var data = await _mediator.Send(new GetAllNotes());
+        var data = await _mediator.Send(new GetAllMyNotes());
 
         return Result(data);
     }
@@ -30,7 +30,7 @@ public class NotesController : BaseApiController
     [ServiceFilter(typeof(NotFoundFilterAttribute<Note>))]
     public async Task<IActionResult> GetById(string id)
     {
-        var data = await _mediator.Send(new GetNoteById() { Id = id });
+        var data = await _mediator.Send(new GetMyNoteById() { Id = id });
 
         return Result(data);
     }
@@ -54,7 +54,7 @@ public class NotesController : BaseApiController
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(string id)
     {
-        var data = await _mediator.Send(new DeleteNoteById() { Id = id });
+        var data = await _mediator.Send(new DeleteMyNoteById() { Id = id });
         return Result(data);
     }
 }

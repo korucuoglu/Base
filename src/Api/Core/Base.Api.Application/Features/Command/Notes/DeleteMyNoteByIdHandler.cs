@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace Base.Api.Application.Features.Queries.Notes;
 
-public class DeleteNoteHandler : IRequestHandler<DeleteNoteById, Response<NoContent>>
+public class DeleteMyNoteByIdHandler : IRequestHandler<DeleteMyNoteById, Response<NoContent>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly HashService _hashService;
     private readonly IIdentityService _identityService;
 
-    public DeleteNoteHandler(IUnitOfWork unitOfWork, HashService hashService, IIdentityService identityService)
+    public DeleteMyNoteByIdHandler(IUnitOfWork unitOfWork, HashService hashService, IIdentityService identityService)
     {
         _unitOfWork = unitOfWork;
         _hashService = hashService;
         _identityService = identityService;
     }
 
-    public async Task<Response<NoContent>> Handle(DeleteNoteById request, CancellationToken cancellationToken)
+    public async Task<Response<NoContent>> Handle(DeleteMyNoteById request, CancellationToken cancellationToken)
     {
         await _unitOfWork.NoteWriteRepository()
             .RemoveAsync(x => x.Id == _hashService.Decode(request.Id) && x.ApplicationUserId == _identityService.GetUserDecodeId);

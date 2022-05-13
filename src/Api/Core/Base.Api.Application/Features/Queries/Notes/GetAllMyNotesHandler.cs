@@ -11,20 +11,20 @@ using System.Threading.Tasks;
 
 namespace Base.Api.Application.Features.Queries.Notes;
 
-public class GetAllNotesHandler : IRequestHandler<GetAllNotes, Response<List<NoteDto>>>
+public class GetAllMyNotesHandler : IRequestHandler<GetAllMyNotes, Response<List<NoteDto>>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
     private readonly IIdentityService _identityService;
 
-    public GetAllNotesHandler(IUnitOfWork unitOfWork, IMapper mapper, IIdentityService identityService)
+    public GetAllMyNotesHandler(IUnitOfWork unitOfWork, IMapper mapper, IIdentityService identityService)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
         _identityService = identityService;
     }
 
-    public async Task<Response<List<NoteDto>>> Handle(GetAllNotes request, CancellationToken cancellationToken)
+    public async Task<Response<List<NoteDto>>> Handle(GetAllMyNotes request, CancellationToken cancellationToken)
     {
         var entities = _unitOfWork.NoteReadRepository().Where(x => x.ApplicationUserId == _identityService.GetUserDecodeId);
 

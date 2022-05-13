@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Base.Api.Application.Dtos.Categories;
 
-public class GetCategoryById : IRequest<Response<CategoryDto>>
+public class DeleteMyCategoryById : IRequest<Response<NoContent>>
 {
     public string Id { get; set; }
 }

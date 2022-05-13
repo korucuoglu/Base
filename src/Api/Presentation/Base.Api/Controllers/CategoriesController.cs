@@ -22,7 +22,7 @@ public class CategoriesController : BaseApiController
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var data = await _mediator.Send(new GetAllCategories());
+        var data = await _mediator.Send(new GetAllMyCategories());
 
         return Result(data);
     }
@@ -31,7 +31,7 @@ public class CategoriesController : BaseApiController
     [ServiceFilter(typeof(NotFoundFilterAttribute<Category>))]
     public async Task<IActionResult> GetById(string id)
     {
-        var data = await _mediator.Send(new GetCategoryById() { Id = id });
+        var data = await _mediator.Send(new GetMyCategoryById() { Id = id });
 
         return Result(data);
     }
@@ -40,7 +40,7 @@ public class CategoriesController : BaseApiController
     [ServiceFilter(typeof(NotFoundFilterAttribute<Category>))]
     public async Task<IActionResult> GetNotesByCategoryId(string id)
     {
-        var data = await _mediator.Send(new GetNotesByCategoryId() { Id = id });
+        var data = await _mediator.Send(new GetMyNotesByCategoryId() { Id = id });
 
         return Result(data);
     }
@@ -64,7 +64,7 @@ public class CategoriesController : BaseApiController
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(string id)
     {
-        var data = await _mediator.Send(new DeleteCategoryById() { Id = id });
+        var data = await _mediator.Send(new DeleteMyCategoryById() { Id = id });
         return Result(data);
     }
 }

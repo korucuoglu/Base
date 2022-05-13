@@ -4,6 +4,6 @@ using System.Collections.Generic;
 
 namespace Base.Api.Application.Dtos.Categories;
 
-public class GetAllCategories : IRequest<Response<List<CategoryDto>>>
+public class GetAllMyCategories : IRequest<Response<List<CategoryDto>>>
 {
 }

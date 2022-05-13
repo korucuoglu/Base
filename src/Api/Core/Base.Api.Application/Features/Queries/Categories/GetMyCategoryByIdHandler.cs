@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace Base.Api.Application.Features.Queries.Categories;
 
-public class GetCategoryByIdHandler : IRequestHandler<GetCategoryById, Response<CategoryDto>>
+public class GetMyCategoryByIdHandler : IRequestHandler<GetMyCategoryById, Response<CategoryDto>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
     private readonly IIdentityService _identityService;
     private readonly HashService _hashService;
 
-    public GetCategoryByIdHandler(IUnitOfWork unitOfWork, IMapper mapper, HashService hashService, IIdentityService identityService)
+    public GetMyCategoryByIdHandler(IUnitOfWork unitOfWork, IMapper mapper, HashService hashService, IIdentityService identityService)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
@@ -26,7 +26,7 @@ public class GetCategoryByIdHandler : IRequestHandler<GetCategoryById, Response<
         _identityService = identityService;
     }
 
-    public async Task<Response<CategoryDto>> Handle(GetCategoryById request, CancellationToken cancellationToken)
+    public async Task<Response<CategoryDto>> Handle(GetMyCategoryById request, CancellationToken cancellationToken)
     {
         var entity = _unitOfWork.CategoryReadRepository().
             Where(x => x.Id == _hashService.Decode(request.Id) && x.ApplicationUserId == _identityService.GetUserDecodeId);

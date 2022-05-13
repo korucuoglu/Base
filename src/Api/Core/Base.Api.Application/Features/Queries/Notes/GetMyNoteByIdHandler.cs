@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace Base.Api.Application.Features.Queries.Notes;
 
-public class GetNoteByIdHandler : IRequestHandler<GetNoteById, Response<NoteDto>>
+public class GetMyNoteByIdHandler : IRequestHandler<GetMyNoteById, Response<NoteDto>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
     private readonly IIdentityService _identityService;
     private readonly HashService _hashService;
 
-    public GetNoteByIdHandler(IUnitOfWork unitOfWork, IMapper mapper, HashService hashService, IIdentityService identityService)
+    public GetMyNoteByIdHandler(IUnitOfWork unitOfWork, IMapper mapper, HashService hashService, IIdentityService identityService)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
@@ -26,7 +26,7 @@ public class GetNoteByIdHandler : IRequestHandler<GetNoteById, Response<NoteDto>
         _identityService = identityService;
     }
 
-    public async Task<Response<NoteDto>> Handle(GetNoteById request, CancellationToken cancellationToken)
+    public async Task<Response<NoteDto>> Handle(GetMyNoteById request, CancellationToken cancellationToken)
     {
         var entity = _unitOfWork.NoteReadRepository().
             Where(x => x.Id == _hashService.Decode(request.Id) && x.ApplicationUserId == _identityService.GetUserDecodeId);

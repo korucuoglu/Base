@@ -11,20 +11,20 @@ using System.Threading.Tasks;
 
 namespace Base.Api.Application.Features.Queries.Categories;
 
-public class GetAllCategoriesHandler : IRequestHandler<GetAllCategories, Response<List<CategoryDto>>>
+public class GetAllMyCategoriesHandler : IRequestHandler<GetAllMyCategories, Response<List<CategoryDto>>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
     private readonly IIdentityService _identityService;
 
-    public GetAllCategoriesHandler(IUnitOfWork unitOfWork, IMapper mapper, IIdentityService identityService)
+    public GetAllMyCategoriesHandler(IUnitOfWork unitOfWork, IMapper mapper, IIdentityService identityService)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
         _identityService = identityService;
     }
 
-    public async Task<Response<List<CategoryDto>>> Handle(GetAllCategories request, CancellationToken cancellationToken)
+    public async Task<Response<List<CategoryDto>>> Handle(GetAllMyCategories request, CancellationToken cancellationToken)
     {
         var entities = _unitOfWork.CategoryReadRepository().Where(x => x.ApplicationUserId == _identityService.GetUserDecodeId);
 
