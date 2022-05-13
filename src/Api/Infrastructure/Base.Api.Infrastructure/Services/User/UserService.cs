@@ -56,7 +56,7 @@ public class UserService : IUserService
 
         if (!user.EmailConfirmed)
         {
-            return Response<string>.Fail(CustomResponseMessages.EmailConfirmedError, 500);
+            return Response<string>.Fail(CustomResponseMessages.EmailNotConfirmed, 500);
         }
 
         var token = _tokenService.CreateToken(user);
@@ -138,7 +138,7 @@ public class UserService : IUserService
 
             SendValidateMail(user, link);
 
-            return Response<NoContent>.Success($"{user.Email} ${CustomResponseMessages.EmailSended}", 200);
+            return Response<NoContent>.Success($"{CustomResponseMessages.EmailSended} {user.Email}", 200);
         }
 
         return await GetResult(user);
@@ -166,7 +166,7 @@ public class UserService : IUserService
                 return Response<NoContent>.Fail(error, 500);
             }
 
-            return Response<NoContent>.Success(CustomResponseMessages.PasswordChangedConfirm, 200);
+            return Response<NoContent>.Success(CustomResponseMessages.PasswordChanged, 200);
         }
 
         return await GetResult(user);
@@ -183,7 +183,7 @@ public class UserService : IUserService
 
         user.UserName = model.UserName;
 
-        var message = CustomResponseMessages.UserInfoChangedConfirm;
+        var message = CustomResponseMessages.UserInfoChanged;
 
         if (user.Email.ToLower() != model.Email.ToLower())
         {
@@ -197,7 +197,7 @@ public class UserService : IUserService
 
             SendValidateMail(user, link);
 
-            message = $"Güncelleme başarılı. {user.Email} {CustomResponseMessages.EmailSended}";
+            message = $"{CustomResponseMessages.EmailSended} {user.Email}";
         }
 
         var result = await _userManager.UpdateAsync(user);
@@ -230,6 +230,6 @@ public class UserService : IUserService
             return Response<NoContent>.Fail(error, 500);
         }
 
-        return Response<NoContent>.Success(CustomResponseMessages.PasswordChangedConfirm, 204);
+        return Response<NoContent>.Success(CustomResponseMessages.PasswordChanged, 204);
     }
 }
