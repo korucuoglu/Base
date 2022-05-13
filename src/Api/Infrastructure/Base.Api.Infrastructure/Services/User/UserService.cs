@@ -31,7 +31,7 @@ public class UserService : IUserService
         _identityService = identityService;
     }
 
-    private Response<NoContent> SendValidateMail(ApplicationUser user, string link)
+    private Response<NoContent> SendMail(ApplicationUser user, string link)
     {
         MailSendEvent mailSendEvent = new()
         {
@@ -42,7 +42,7 @@ public class UserService : IUserService
 
         _rabbitMQPublisher.Publish(mailSendEvent);
 
-        return Response<NoContent>.Success($"{user.Email} mail adresine doğrulama maili gönderildi", 201);
+        return Response<NoContent>.Success($"{CustomResponseMessages.EmailSended} {user.Email}", 201);
     }
 
     public async Task<Response<string>> Login(LoginModel model)
@@ -86,7 +86,7 @@ public class UserService : IUserService
 
             string link = $"{_identityService.AppBaseUrl}/users/validate-mail?userId={_hashService.Encode(user.Id)}&token={encodedConfirmationToken}";
 
-            return SendValidateMail(user, link);
+            return SendMail(user, link);
         }
 
         return await GetResult(result);
@@ -136,7 +136,7 @@ public class UserService : IUserService
 
             string link = $"{_identityService.AppBaseUrl}/user/reset-passwordConfirm?userId={_hashService.Encode(user.Id)}&token={encodedToken}";
 
-            SendValidateMail(user, link);
+            SendMail(user, link);
 
             return Response<NoContent>.Success($"{CustomResponseMessages.EmailSended} {user.Email}", 200);
         }
@@ -195,7 +195,7 @@ public class UserService : IUserService
 
             string link = $"{_identityService.AppBaseUrl}/users/validate-mail?userId={_hashService.Encode(user.Id)}&token={encodedConfirmationToken}";
 
-            SendValidateMail(user, link);
+            SendMail(user, link);
 
             message = $"{CustomResponseMessages.EmailSended} {user.Email}";
         }
