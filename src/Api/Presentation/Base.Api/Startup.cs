@@ -1,6 +1,6 @@
 ﻿using Base.Api.Application;
+using Base.Api.Application.Features.Categories;
 using Base.Api.Application.Middlewares;
-using Base.Api.Application.Validations.Products;
 using Base.Api.Infrastructure;
 using Base.Api.Infrastructure.Attributes;
 using Base.Api.Persistence;
@@ -37,7 +37,7 @@ namespace Base.Api
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 opt.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             })
-            .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining(typeof(AddProductDtoValidator)));
+            .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining(typeof(AddCategoryRequestValidator)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
