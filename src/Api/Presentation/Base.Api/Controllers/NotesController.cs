@@ -1,5 +1,4 @@
-﻿using Base.Api.Application.Dtos.Notes;
-using Base.Api.Application.Features.Notes;
+﻿using Base.Api.Application.Features.Notes;
 using Base.Api.Domain.Entities;
 using Base.Api.Infrastructure.Attributes;
 using MediatR;

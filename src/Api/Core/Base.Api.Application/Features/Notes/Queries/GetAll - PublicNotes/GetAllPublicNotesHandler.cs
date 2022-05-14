@@ -22,7 +22,7 @@ public class GetAllPublicNotesHandler : IRequestHandler<GetAllPublicNotesRequest
 
     public Task<Response<List<PublicNoteDto>>> Handle(GetAllPublicNotesRequest request, CancellationToken cancellationToken)
     {
-        var query = @"SELECT id, title, content, users.""UserName"" AS username FROM notes 
+        var query = @"SELECT id, title, content, users.""UserName"" AS username FROM notes
         JOIN ""AspNetUsers"" users ON users.""Id"" = notes.""ApplicationUserId"" WHERE notes.is_public = TRUE";
 
         var entities = _unitOfWork.NoteReadRepository().ExecuteQuery<PublicNoteEntity>(query);

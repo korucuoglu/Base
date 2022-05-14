@@ -1,5 +1,4 @@
-﻿
-namespace Base.Api.Application.Dtos.Notes;
+﻿namespace Base.Api.Application.Dtos.Notes;
 
 public class PublicNoteEntity
 {
