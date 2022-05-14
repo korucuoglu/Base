@@ -35,6 +35,15 @@ public class NotesController : BaseApiController
         return Result(data);
     }
 
+    [HttpGet("public/{id}")]
+    [AllowAnonymous]
+    public async Task<IActionResult> GetByIdPublicNote(string id)
+    {
+        var data = await _mediator.Send(new GetByIdPublicNoteRequest() { Id = id });
+
+        return Result(data);
+    }
+
     [HttpGet("{id}")]
     [ServiceFilter(typeof(NotFoundFilterAttribute<Note>))]
     public async Task<IActionResult> GetById(string id)
