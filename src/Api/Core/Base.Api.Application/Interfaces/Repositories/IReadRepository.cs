@@ -22,6 +22,7 @@ public interface IReadRepository<TEntity> where TEntity : BaseEntity
 
     Task<TEntity> FindAsync(int id, bool tracking = false);
 
-    List<T> RawSqlQuery<T>(string query, Func<DbDataReader, T> map);
-    
+    List<T> ExecuteQuery<T>(string query) where T : class, new();
+
+
 }
