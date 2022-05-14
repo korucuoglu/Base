@@ -37,10 +37,10 @@ public class GetByIdPublicNoteHandler : IRequestHandler<GetByIdPublicNoteRequest
         JOIN ""AspNetUsers"" users ON users.""Id"" = notes.""ApplicationUserId""
         WHERE notes.is_public = TRUE AND id={decodeId}";
 
-        var entities = _unitOfWork.NoteReadRepository().ExecuteQuery<PublicNote>(query).First();
+        var entity = _unitOfWork.NoteReadRepository().ExecuteQuery<PublicNote>(query).First();
 
-        var dtos = _mapper.Map<PublicNoteDto>(entities);
+        var dto = _mapper.Map<PublicNoteDto>(entity);
 
-        return Task.FromResult(Response<PublicNoteDto>.Success(data: dtos, statusCode: 200));
+        return Task.FromResult(Response<PublicNoteDto>.Success(data: dto, statusCode: 200));
     }
 }
