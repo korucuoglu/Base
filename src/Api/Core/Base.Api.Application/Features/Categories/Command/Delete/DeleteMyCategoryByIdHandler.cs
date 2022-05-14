@@ -1,25 +1,24 @@
-﻿using Base.Api.Application.Dtos.Categories;
-using Base.Api.Application.Dtos.Wrappers;
+﻿using Base.Api.Application.Dtos.Wrappers;
 using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Interfaces.UnitOfWork;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Base.Api.Application.Features.Queries.Categories;
+namespace Base.Api.Application.Features.Categories;
 
-public class DeleteMyCategoryHandler : IRequestHandler<DeleteMyCategoryById, Response<NoContent>>
+public class DeleteMyCategoryByIdHandler : IRequestHandler<DeleteMyCategoryByIdRequest, Response<NoContent>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly HashService _hashService;
 
-    public DeleteMyCategoryHandler(IUnitOfWork unitOfWork, HashService hashService)
+    public DeleteMyCategoryByIdHandler(IUnitOfWork unitOfWork, HashService hashService)
     {
         _unitOfWork = unitOfWork;
         _hashService = hashService;
     }
 
-    public async Task<Response<NoContent>> Handle(DeleteMyCategoryById request, CancellationToken cancellationToken)
+    public async Task<Response<NoContent>> Handle(DeleteMyCategoryByIdRequest request, CancellationToken cancellationToken)
     {
         var entity = await _unitOfWork.CategoryReadRepository().FindAsync(_hashService.Decode(request.Id), true);
 

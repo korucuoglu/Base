@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Base.Api.Application.Dtos.Categories;
 using Base.Api.Application.Dtos.Wrappers;
 using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Interfaces.UnitOfWork;
@@ -8,9 +7,9 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Base.Api.Application.Features.Command.Categories
+namespace Base.Api.Application.Features.Categories
 {
-    public class AddCategoryHandler : IRequestHandler<AddCategoryDto, Response<string>>
+    public class AddCategoryHandler : IRequestHandler<AddCategoryRequest, Response<string>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -23,7 +22,7 @@ namespace Base.Api.Application.Features.Command.Categories
             _hashService = hashService;
         }
 
-        public async Task<Response<string>> Handle(AddCategoryDto request, CancellationToken cancellationToken)
+        public async Task<Response<string>> Handle(AddCategoryRequest request, CancellationToken cancellationToken)
         {
             var data = await _unitOfWork.CategoryWriteRepository().AddAsync(_mapper.Map<Category>(request));
 

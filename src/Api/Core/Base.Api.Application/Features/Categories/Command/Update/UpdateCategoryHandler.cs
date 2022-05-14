@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Base.Api.Application.Dtos.Categories;
 using Base.Api.Application.Dtos.Wrappers;
 using Base.Api.Application.Interfaces.UnitOfWork;
 using Base.Api.Domain.Entities;
@@ -7,9 +6,9 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Base.Api.Application.Features.Command.Categories;
+namespace Base.Api.Application.Features.Categories;
 
-public class UpdateCategoryHandler : IRequestHandler<UpdateCategoryDto, Response<NoContent>>
+public class UpdateCategoryHandler : IRequestHandler<UpdateCategoryRequest, Response<NoContent>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
@@ -20,7 +19,7 @@ public class UpdateCategoryHandler : IRequestHandler<UpdateCategoryDto, Response
         _mapper = mapper;
     }
 
-    public async Task<Response<NoContent>> Handle(UpdateCategoryDto request, CancellationToken cancellationToken)
+    public async Task<Response<NoContent>> Handle(UpdateCategoryRequest request, CancellationToken cancellationToken)
     {
         var entity = _mapper.Map<Category>(request);
 

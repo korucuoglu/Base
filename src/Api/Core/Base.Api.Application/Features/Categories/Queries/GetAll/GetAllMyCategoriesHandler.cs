@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Base.Api.Application.Features.Queries.Categories;
+namespace Base.Api.Application.Features.Categories;
 
 public class GetAllMyCategoriesHandler : IRequestHandler<GetAllMyCategories, Response<List<CategoryDto>>>
 {

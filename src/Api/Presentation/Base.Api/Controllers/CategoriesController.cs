@@ -1,5 +1,6 @@
 ﻿using Base.Api.Application.Dtos.Categories;
 using Base.Api.Application.Dtos.Notes;
+using Base.Api.Application.Features.Categories;
 using Base.Api.Domain.Entities;
 using Base.Api.Infrastructure.Attributes;
 using MediatR;
@@ -46,7 +47,7 @@ public class CategoriesController : BaseApiController
     }
 
     [HttpPost]
-    public async Task<IActionResult> Add(AddCategoryDto dto)
+    public async Task<IActionResult> Add(AddCategoryRequest dto)
     {
         var data = await _mediator.Send(dto);
         return Result(data);
@@ -54,7 +55,7 @@ public class CategoriesController : BaseApiController
 
     [HttpPut]
     [ServiceFilter(typeof(NotFoundFilterAttribute<Category>))]
-    public async Task<IActionResult> Update(UpdateCategoryDto dto)
+    public async Task<IActionResult> Update(UpdateCategoryRequest dto)
     {
         var data = await _mediator.Send(dto);
         return Result(data);
@@ -64,7 +65,7 @@ public class CategoriesController : BaseApiController
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(string id)
     {
-        var data = await _mediator.Send(new DeleteMyCategoryById() { Id = id });
+        var data = await _mediator.Send(new DeleteMyCategoryByIdRequest() { Id = id });
         return Result(data);
     }
 }

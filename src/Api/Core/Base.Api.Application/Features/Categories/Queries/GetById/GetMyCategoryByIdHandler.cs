@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Base.Api.Application.Features.Queries.Categories;
+namespace Base.Api.Application.Features.Categories;
 
 public class GetMyCategoryByIdHandler : IRequestHandler<GetMyCategoryById, Response<CategoryDto>>
 {

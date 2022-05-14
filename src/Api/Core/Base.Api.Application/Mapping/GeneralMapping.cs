@@ -2,6 +2,7 @@
 using Base.Api.Application.Dtos.Categories;
 using Base.Api.Application.Dtos.Notes;
 using Base.Api.Application.Dtos.Products;
+using Base.Api.Application.Features.Categories;
 using Base.Api.Application.Interfaces.Services;
 using Base.Api.Domain.Entities;
 
@@ -30,9 +31,9 @@ public class GeneralMapping : Profile
         CreateMap<Category, CategoryDto>().
                ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Encode(src.Id)));
 
-        CreateMap<AddCategoryDto, Category>();
+        CreateMap<AddCategoryRequest, Category>();
 
-        CreateMap<UpdateCategoryDto, Category>().
+        CreateMap<UpdateCategoryRequest, Category>().
                ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Decode(src.Id)));
 
         #endregion Categories

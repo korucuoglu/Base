@@ -1,11 +1,11 @@
 ﻿using Base.Api.Application.Dtos.Categories;
 using FluentValidation;
 
-namespace Base.Api.Application.Validations.Categories;
+namespace Base.Api.Application.Features.Categories;
 
-public class UpdateCategoryDtoValidator : AbstractValidator<UpdateCategoryDto>
+public class UpdateCategoryRequestValidator : AbstractValidator<UpdateCategoryRequest>
 {
-    public UpdateCategoryDtoValidator()
+    public UpdateCategoryRequestValidator()
     {
         RuleFor(x => x.Id).NotNull().NotEmpty().WithMessage("{PropertyName} alanı boş olamaz");
         RuleFor(x => x.Title).NotNull().NotEmpty().WithMessage("{PropertyName} alanı boş olamaz");
