@@ -1,46 +1,37 @@
 ﻿using AutoMapper;
-using Base.Api.Application.Models.Dtos;
 using Base.Api.Application.Interfaces.UnitOfWork;
+using Base.Api.Application.Models.Dtos;
+using Base.Api.Application.Models.Entities;
 using MediatR;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Base.Api.Application.Models.Entities;
-using Base.Api.Application.Interfaces.Services;
-using System.Linq;
 
 namespace Base.Api.Application.Features.Notes;
 
-public class GetByIdPublicNoteHandler : IRequestHandler<GetByIdPublicNoteRequest, Response<PublicNoteDto>>
+public class GetByIdPublicNoteHandler : IRequestHandler<GetByIdPublicNoteRequest, Response<NoteDto>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
-    private readonly HashService _hashService;
 
-    public GetByIdPublicNoteHandler(IUnitOfWork unitOfWork, IMapper mapper, HashService hashService)
+    public GetByIdPublicNoteHandler(IUnitOfWork unitOfWork, IMapper mapper)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
-        _hashService = hashService;
     }
 
-    public Task<Response<PublicNoteDto>> Handle(GetByIdPublicNoteRequest request, CancellationToken cancellationToken)
+    public Task<Response<NoteDto>> Handle(GetByIdPublicNoteRequest request, CancellationToken cancellationToken)
     {
         var repository = _unitOfWork.NoteReadRepository();
-        var decodeId = _hashService.Decode(request.Id);
-
-        if (!repository.Any(x => x.Id == decodeId && x.IsPublic))
-        {
-            return Task.FromResult(Response<PublicNoteDto>.Fail("Not Found", 500));
-        }
 
         var query = @$"SELECT id as ""Id"", title, content, users.""UserName"" AS username FROM notes
         JOIN ""AspNetUsers"" users ON users.""Id"" = notes.""ApplicationUserId""
-        WHERE notes.is_public = TRUE AND id={decodeId}";
+        WHERE notes.is_public = TRUE AND id={request.Id}";
 
-        var entity = _unitOfWork.NoteReadRepository().ExecuteQuery<PublicNote>(query).First();
+        var entity = repository.ExecuteQuery<NoteRawSqlQueryModel>(query).First();
 
-        var dto = _mapper.Map<PublicNoteDto>(entity);
+        var dto = _mapper.Map<NoteDto>(entity);
 
-        return Task.FromResult(Response<PublicNoteDto>.Success(data: dto, statusCode: 200));
+        return Task.FromResult(Response<NoteDto>.Success(data: dto, statusCode: 200));
     }
 }

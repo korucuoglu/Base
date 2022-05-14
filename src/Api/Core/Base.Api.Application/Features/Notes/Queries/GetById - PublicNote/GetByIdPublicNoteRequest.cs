@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Base.Api.Application.Features.Notes;
 
-public class GetByIdPublicNoteRequest : IRequest<Response<PublicNoteDto>>
+public class GetByIdPublicNoteRequest : IRequest<Response<NoteDto>>
 {
-    public string Id { get; set; }
+    public int Id { get; set; }
 }

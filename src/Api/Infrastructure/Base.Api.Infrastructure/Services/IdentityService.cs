@@ -18,8 +18,8 @@ namespace Base.Api.Infrastructure.Services
 
         public string GetUserId => _httpContextAccessor.HttpContext.User.FindFirstValue("id");
         public int GetUserDecodeId => _hashService.Decode(_httpContextAccessor.HttpContext.User.FindFirstValue("id"));
-
-        // public string AppBaseUrl => $"{_httpContextAccessor.HttpContext.Request.Scheme}://{_httpContextAccessor.HttpContext.Request.Host}{_httpContextAccessor.HttpContext.Request.PathBase}";
         public string AppBaseUrl => $"{_httpContextAccessor.HttpContext.Request.Scheme}://{_httpContextAccessor.HttpContext.Request.Host}";
+
+        public bool IsAuthenticated => _httpContextAccessor.HttpContext.User.Identity.IsAuthenticated;
     }
 }

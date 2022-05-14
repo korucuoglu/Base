@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Base.Api.Application.Models.Dtos;
 using Base.Api.Application.Interfaces.UnitOfWork;
+using Base.Api.Application.Models.Dtos;
 using Base.Api.Domain.Entities;
 using MediatR;
 using System.Threading;

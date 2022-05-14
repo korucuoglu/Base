@@ -5,5 +5,6 @@
         public string GetUserId { get; }
         public string AppBaseUrl { get; }
         public int GetUserDecodeId { get; }
+        public bool IsAuthenticated { get; }
     }
 }

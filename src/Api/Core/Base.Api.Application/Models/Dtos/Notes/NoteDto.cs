@@ -6,4 +6,5 @@ public class NoteDto
     public string Title { get; set; }
     public string Content { get; set; }
     public bool IsPublic { get; set; }
+    public string Username { get; set; }
 }

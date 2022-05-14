@@ -3,7 +3,10 @@
     <div class="card mb-2">
       <div class="card-body">
         <router-link
-          :to="{ name: 'NoteDetailsView', params: { id: item.id } }"
+          :to="{
+            name: 'NoteDetailsView',
+            params: { id: item.id, public: true },
+          }"
           class="card-title h5"
           >{{ item.title }}</router-link
         >

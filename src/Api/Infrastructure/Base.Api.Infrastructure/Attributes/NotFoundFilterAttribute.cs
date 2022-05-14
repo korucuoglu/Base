@@ -1,6 +1,6 @@
-﻿using Base.Api.Application.Models.Dtos;
-using Base.Api.Application.Interfaces.Services;
+﻿using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Interfaces.UnitOfWork;
+using Base.Api.Application.Models.Dtos;
 using Base.Api.Application.Services;
 using Base.Api.Domain.Common;
 using Microsoft.AspNetCore.Mvc;

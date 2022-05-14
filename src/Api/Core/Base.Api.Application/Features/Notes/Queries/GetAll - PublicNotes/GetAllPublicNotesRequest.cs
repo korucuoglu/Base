@@ -4,6 +4,6 @@ using System.Collections.Generic;
 
 namespace Base.Api.Application.Features.Notes;
 
-public class GetAllPublicNotesRequest : IRequest<Response<List<PublicNoteDto>>>
+public class GetAllPublicNotesRequest : IRequest<Response<List<NoteDto>>>
 {
 }
