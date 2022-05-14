@@ -1,6 +1,5 @@
-﻿using Base.Api.Application.Dtos.Categories;
-using Base.Api.Application.Dtos.Notes;
-using Base.Api.Application.Features.Categories;
+﻿using Base.Api.Application.Features.Categories;
+using Base.Api.Application.Features.Notes;
 using Base.Api.Domain.Entities;
 using Base.Api.Infrastructure.Attributes;
 using MediatR;
@@ -41,7 +40,7 @@ public class CategoriesController : BaseApiController
     [ServiceFilter(typeof(NotFoundFilterAttribute<Category>))]
     public async Task<IActionResult> GetNotesByCategoryId(string id)
     {
-        var data = await _mediator.Send(new GetMyNotesByCategoryId() { Id = id });
+        var data = await _mediator.Send(new GetMyNotesByCategoryIdRequest() { Id = id });
 
         return Result(data);
     }

@@ -2,6 +2,7 @@
 using Base.Api.Application.Dtos.Categories;
 using Base.Api.Application.Dtos.Notes;
 using Base.Api.Application.Features.Categories;
+using Base.Api.Application.Features.Notes;
 using Base.Api.Application.Interfaces.Services;
 using Base.Api.Domain.Entities;
 
@@ -33,9 +34,9 @@ public class GeneralMapping : Profile
         CreateMap<PublicNoteEntity, PublicNoteDto>().
               ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Encode(src.Id)));
 
-        CreateMap<AddNoteDto, Note>().ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => hashService.Decode(src.CategoryId)));
+        CreateMap<AddNoteRequest, Note>().ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => hashService.Decode(src.CategoryId)));
 
-        CreateMap<UpdateNoteDto, Note>()
+        CreateMap<UpdateNoteRequest, Note>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Decode(src.Id)))
                 .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => hashService.Decode(src.CategoryId)));
 

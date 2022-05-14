@@ -1,9 +1,9 @@
 ﻿using Base.Api.Application.Dtos.Wrappers;
 using MediatR;
 
-namespace Base.Api.Application.Dtos.Notes;
+namespace Base.Api.Application.Features.Notes;
 
-public class UpdateNoteDto : IRequest<Response<NoContent>>
+public class UpdateNoteRequest : IRequest<Response<NoContent>>
 {
     public string Id { get; set; }
     public string Title { get; set; }

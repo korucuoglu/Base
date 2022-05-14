@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Base.Api.Application.Features.Queries.Notes;
+namespace Base.Api.Application.Features.Notes;
 
-public class GetAllPublicNotesHandler : IRequestHandler<GetAllPublicNotes, Response<List<PublicNoteDto>>>
+public class GetAllPublicNotesHandler : IRequestHandler<GetAllPublicNotesRequest, Response<List<PublicNoteDto>>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
@@ -20,7 +20,7 @@ public class GetAllPublicNotesHandler : IRequestHandler<GetAllPublicNotes, Respo
         _mapper = mapper;
     }
 
-    public Task<Response<List<PublicNoteDto>>> Handle(GetAllPublicNotes request, CancellationToken cancellationToken)
+    public Task<Response<List<PublicNoteDto>>> Handle(GetAllPublicNotesRequest request, CancellationToken cancellationToken)
     {
         var query = @"SELECT id, title, content, users.""UserName"" AS username FROM notes 
         JOIN ""AspNetUsers"" users ON users.""Id"" = notes.""ApplicationUserId"" WHERE notes.is_public = TRUE";

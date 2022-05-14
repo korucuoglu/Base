@@ -9,9 +9,9 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Base.Api.Application.Features.Queries.Notes;
+namespace Base.Api.Application.Features.Notes;
 
-public class GetAllMyNotesHandler : IRequestHandler<GetAllMyNotes, Response<List<NoteDto>>>
+public class GetAllMyNotesHandler : IRequestHandler<GetAllMyNotesRequest, Response<List<NoteDto>>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
@@ -24,7 +24,7 @@ public class GetAllMyNotesHandler : IRequestHandler<GetAllMyNotes, Response<List
         _identityService = identityService;
     }
 
-    public async Task<Response<List<NoteDto>>> Handle(GetAllMyNotes request, CancellationToken cancellationToken)
+    public async Task<Response<List<NoteDto>>> Handle(GetAllMyNotesRequest request, CancellationToken cancellationToken)
     {
         var entities = _unitOfWork.NoteReadRepository().Where(x => x.ApplicationUserId == _identityService.GetUserDecodeId);
 

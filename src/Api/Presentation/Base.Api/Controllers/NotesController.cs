@@ -1,4 +1,5 @@
 ﻿using Base.Api.Application.Dtos.Notes;
+using Base.Api.Application.Features.Notes;
 using Base.Api.Domain.Entities;
 using Base.Api.Infrastructure.Attributes;
 using MediatR;
@@ -21,7 +22,7 @@ public class NotesController : BaseApiController
     [HttpGet]
     public async Task<IActionResult> GetAllMyNotes()
     {
-        var data = await _mediator.Send(new GetAllMyNotes());
+        var data = await _mediator.Send(new GetAllMyNotesRequest());
 
         return Result(data);
     }
@@ -30,7 +31,7 @@ public class NotesController : BaseApiController
     [AllowAnonymous]
     public async Task<IActionResult> GetAllPublicNotes()
     {
-        var data = await _mediator.Send(new GetAllPublicNotes());
+        var data = await _mediator.Send(new GetAllPublicNotesRequest());
 
         return Result(data);
     }
@@ -39,13 +40,13 @@ public class NotesController : BaseApiController
     [ServiceFilter(typeof(NotFoundFilterAttribute<Note>))]
     public async Task<IActionResult> GetById(string id)
     {
-        var data = await _mediator.Send(new GetMyNoteById() { Id = id });
+        var data = await _mediator.Send(new GetMyNoteByIdRequest() { Id = id });
 
         return Result(data);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Add(AddNoteDto dto)
+    public async Task<IActionResult> Add(AddNoteRequest dto)
     {
         var data = await _mediator.Send(dto);
         return Result(data);
@@ -53,7 +54,7 @@ public class NotesController : BaseApiController
 
     [HttpPut]
     [ServiceFilter(typeof(NotFoundFilterAttribute<Note>))]
-    public async Task<IActionResult> Update(UpdateNoteDto dto)
+    public async Task<IActionResult> Update(UpdateNoteRequest dto)
     {
         var data = await _mediator.Send(dto);
         return Result(data);
@@ -63,7 +64,7 @@ public class NotesController : BaseApiController
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(string id)
     {
-        var data = await _mediator.Send(new DeleteMyNoteById() { Id = id });
+        var data = await _mediator.Send(new DeleteMyNoteByIdRequest() { Id = id });
         return Result(data);
     }
 }

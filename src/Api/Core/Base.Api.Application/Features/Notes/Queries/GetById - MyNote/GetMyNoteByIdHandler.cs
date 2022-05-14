@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Base.Api.Application.Features.Queries.Notes;
+namespace Base.Api.Application.Features.Notes;
 
-public class GetMyNoteByIdHandler : IRequestHandler<GetMyNoteById, Response<NoteDto>>
+public class GetMyNoteByIdHandler : IRequestHandler<GetMyNoteByIdRequest, Response<NoteDto>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
@@ -26,7 +26,7 @@ public class GetMyNoteByIdHandler : IRequestHandler<GetMyNoteById, Response<Note
         _identityService = identityService;
     }
 
-    public async Task<Response<NoteDto>> Handle(GetMyNoteById request, CancellationToken cancellationToken)
+    public async Task<Response<NoteDto>> Handle(GetMyNoteByIdRequest request, CancellationToken cancellationToken)
     {
         var entity = _unitOfWork.NoteReadRepository().
             Where(x => x.Id == _hashService.Decode(request.Id) && x.ApplicationUserId == _identityService.GetUserDecodeId);

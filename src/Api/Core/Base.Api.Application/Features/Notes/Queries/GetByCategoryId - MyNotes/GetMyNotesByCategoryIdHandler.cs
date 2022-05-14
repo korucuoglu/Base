@@ -10,9 +10,9 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Base.Api.Application.Features.Queries.Notes;
+namespace Base.Api.Application.Features.Notes;
 
-public class GetMyNotesByCategoryIdHandler : IRequestHandler<GetMyNotesByCategoryId, Response<List<NoteDto>>>
+public class GetMyNotesByCategoryIdHandler : IRequestHandler<GetMyNotesByCategoryIdRequest, Response<List<NoteDto>>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
@@ -27,7 +27,7 @@ public class GetMyNotesByCategoryIdHandler : IRequestHandler<GetMyNotesByCategor
         _hashService = hashService;
     }
 
-    public async Task<Response<List<NoteDto>>> Handle(GetMyNotesByCategoryId request, CancellationToken cancellationToken)
+    public async Task<Response<List<NoteDto>>> Handle(GetMyNotesByCategoryIdRequest request, CancellationToken cancellationToken)
     {
         var entities = _unitOfWork.NoteReadRepository().
             Where(x => x.ApplicationUserId == _identityService.GetUserDecodeId && x.CategoryId == _hashService.Decode(request.Id));

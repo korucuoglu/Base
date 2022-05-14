@@ -1,5 +1,4 @@
-﻿using Base.Api.Application.Dtos.Notes;
-using Base.Api.Application.Dtos.Wrappers;
+﻿using Base.Api.Application.Dtos.Wrappers;
 using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Interfaces.UnitOfWork;
 using Base.Api.Application.Services;
@@ -7,9 +6,9 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Base.Api.Application.Features.Queries.Notes;
+namespace Base.Api.Application.Features.Notes;
 
-public class DeleteMyNoteByIdHandler : IRequestHandler<DeleteMyNoteById, Response<NoContent>>
+public class DeleteMyNoteByIdHandler : IRequestHandler<DeleteMyNoteByIdRequest, Response<NoContent>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly HashService _hashService;
@@ -22,7 +21,7 @@ public class DeleteMyNoteByIdHandler : IRequestHandler<DeleteMyNoteById, Respons
         _identityService = identityService;
     }
 
-    public async Task<Response<NoContent>> Handle(DeleteMyNoteById request, CancellationToken cancellationToken)
+    public async Task<Response<NoContent>> Handle(DeleteMyNoteByIdRequest request, CancellationToken cancellationToken)
     {
         await _unitOfWork.NoteWriteRepository()
             .RemoveAsync(x => x.Id == _hashService.Decode(request.Id) && x.ApplicationUserId == _identityService.GetUserDecodeId);
