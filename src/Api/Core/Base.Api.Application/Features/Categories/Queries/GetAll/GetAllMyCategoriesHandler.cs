@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
-using Base.Api.Application.Dtos.Categories;
-using Base.Api.Application.Dtos.Wrappers;
 using Base.Api.Application.Interfaces.UnitOfWork;
+using Base.Api.Application.Models.Dtos;
 using Base.Api.Application.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

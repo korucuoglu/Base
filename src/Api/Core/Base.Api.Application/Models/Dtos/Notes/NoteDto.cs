@@ -1,4 +1,4 @@
-﻿namespace Base.Api.Application.Dtos.Notes;
+﻿namespace Base.Api.Application.Models.Dtos;
 
 public class NoteDto
 {

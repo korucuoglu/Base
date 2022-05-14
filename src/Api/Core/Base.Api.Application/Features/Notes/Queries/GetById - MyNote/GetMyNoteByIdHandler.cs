@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
-using Base.Api.Application.Dtos.Notes;
-using Base.Api.Application.Dtos.Wrappers;
+using Base.Api.Application.Models.Dtos;
 using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Interfaces.UnitOfWork;
 using Base.Api.Application.Services;

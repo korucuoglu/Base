@@ -1,8 +1,8 @@
-﻿namespace Base.Api.Application.Entities.Notes;
+﻿namespace Base.Api.Application.Models.Dtos;
 
-public class PublicNote
+public class PublicNoteDto
 {
-    public int Id { get; set; }
+    public string Id { get; set; }
     public string Title { get; set; }
     public string Content { get; set; }
     public string Username { get; set; }

@@ -1,4 +1,4 @@
-﻿using Base.Api.Application.Dtos.Wrappers;
+﻿using Base.Api.Application.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Linq;

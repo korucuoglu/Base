@@ -1,5 +1,4 @@
-﻿using Base.Api.Application.Dtos.Categories;
-using Base.Api.Application.Dtos.Wrappers;
+﻿using Base.Api.Application.Models.Dtos;
 using MediatR;
 
 namespace Base.Api.Application.Features.Categories;

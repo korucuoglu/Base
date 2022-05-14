@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
-using Base.Api.Application.Dtos.Notes;
-using Base.Api.Application.Dtos.Wrappers;
-using Base.Api.Application.Entities.Notes;
+using Base.Api.Application.Models.Dtos;
 using Base.Api.Application.Interfaces.UnitOfWork;
 using MediatR;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Base.Api.Application.Models.Entities;
 
 namespace Base.Api.Application.Features.Notes;
 

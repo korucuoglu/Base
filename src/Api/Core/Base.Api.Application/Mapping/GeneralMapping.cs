@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
-using Base.Api.Application.Dtos.Categories;
-using Base.Api.Application.Dtos.Notes;
-using Base.Api.Application.Entities.Notes;
+using Base.Api.Application.Models.Dtos;
+using Base.Api.Application.Models.Entities;
 using Base.Api.Application.Features.Categories;
 using Base.Api.Application.Features.Notes;
 using Base.Api.Application.Interfaces.Services;

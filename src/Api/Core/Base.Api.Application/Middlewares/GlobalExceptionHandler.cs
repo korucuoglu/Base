@@ -1,4 +1,4 @@
-﻿using Base.Api.Application.Dtos.Wrappers;
+﻿using Base.Api.Application.Models.Dtos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;

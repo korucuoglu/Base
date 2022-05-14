@@ -1,6 +1,6 @@
-﻿using Base.Api.Application.Const;
-using Base.Api.Application.Identity;
+﻿using Base.Api.Application.Identity;
 using Base.Api.Application.Interfaces.Services;
+using Base.Api.Application.Models.Const;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;

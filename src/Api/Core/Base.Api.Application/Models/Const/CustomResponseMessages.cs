@@ -1,4 +1,4 @@
-﻿namespace Base.Api.Application.Const;
+﻿namespace Base.Api.Application.Models.Const;
 
 public static class CustomResponseMessages
 {
