@@ -1,12 +1,10 @@
-﻿namespace Base.Api.Application.Dtos.Notes;
+﻿
+namespace Base.Api.Application.Dtos.Notes;
 
-
-public class PublicNoteDto
+public class PublicNoteEntity
 {
-    public string Id { get; set; }
+    public int Id { get; set; }
     public string Title { get; set; }
     public string Content { get; set; }
     public string Username { get; set; }
 }
-
-

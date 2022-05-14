@@ -1,4 +1,5 @@
-﻿using Base.Api.Application.Dtos.Notes;
+﻿using AutoMapper;
+using Base.Api.Application.Dtos.Notes;
 using Base.Api.Application.Dtos.Wrappers;
 using Base.Api.Application.Interfaces.UnitOfWork;
 using MediatR;
@@ -11,10 +12,12 @@ namespace Base.Api.Application.Features.Queries.Notes;
 public class GetAllPublicNotesHandler : IRequestHandler<GetAllPublicNotes, Response<List<PublicNoteDto>>>
 {
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
 
-    public GetAllPublicNotesHandler(IUnitOfWork unitOfWork)
+    public GetAllPublicNotesHandler(IUnitOfWork unitOfWork, IMapper mapper)
     {
         _unitOfWork = unitOfWork;
+        _mapper = mapper;
     }
 
     public Task<Response<List<PublicNoteDto>>> Handle(GetAllPublicNotes request, CancellationToken cancellationToken)
@@ -22,7 +25,9 @@ public class GetAllPublicNotesHandler : IRequestHandler<GetAllPublicNotes, Respo
         var query = @"SELECT id, title, content, users.""UserName"" AS username FROM notes 
         JOIN ""AspNetUsers"" users ON users.""Id"" = notes.""ApplicationUserId"" WHERE notes.is_public = TRUE";
 
-        var dtos = _unitOfWork.NoteReadRepository().RawSqlQuery(query, x=> new PublicNoteDto { Title = (string)x[1], Content = (string)x[2], Username = (string)x[3] });
+        var entities = _unitOfWork.NoteReadRepository().ExecuteQuery<PublicNoteEntity>(query);
+
+        var dtos = _mapper.Map<List<PublicNoteDto>>(entities);
 
         return Task.FromResult(Response<List<PublicNoteDto>>.Success(data: dtos, statusCode: 200));
     }

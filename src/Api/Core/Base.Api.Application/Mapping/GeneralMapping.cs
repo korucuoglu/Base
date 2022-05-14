@@ -42,7 +42,7 @@ public class GeneralMapping : Profile
         CreateMap<Note, NoteDto>().
                ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Encode(src.Id)));
 
-        CreateMap<Note, PublicNoteDto>().
+        CreateMap<PublicNoteEntity, PublicNoteDto>().
               ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Encode(src.Id)));
 
         CreateMap<AddNoteDto, Note>().ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => hashService.Decode(src.CategoryId)));
