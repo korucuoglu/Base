@@ -13,6 +13,11 @@ const routes = [
     component: import('@/views/User/LoginView'),
   },
   {
+    path: '/note/:id',
+    name: 'NoteDetailsView',
+    component: import('@/views/Note/NoteDetailsView'),
+  },
+  {
     path: '/register',
     name: 'RegisterView',
     component: import('@/views/User/RegisterView'),

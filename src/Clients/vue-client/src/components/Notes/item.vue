@@ -1,13 +1,16 @@
 <template>
-  <div class="col-md-3 mb-2">
-    <div class="card">
+  <div class="col-10 offset-1">
+    <div class="card mb-2">
       <div class="card-body">
-        <h5 class="card-title">{{ item.title }}</h5>
+        <router-link
+          :to="{ name: 'NoteDetailsView', params: { id: item.id } }"
+          class="card-title h5"
+          >{{ item.title }}</router-link
+        >
+        <h6 class="card-subtitle mb-2 text-muted">{{ item.username }}</h6>
         <p class="card-text">
           {{ item.content }}
         </p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
       </div>
     </div>
   </div>
@@ -18,3 +21,12 @@ export default {
   props: ['item'],
 }
 </script>
+
+<style>
+.card-text {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+</style>

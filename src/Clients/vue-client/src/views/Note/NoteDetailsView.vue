@@ -1,0 +1,1 @@
+<template>Note Details</template>
