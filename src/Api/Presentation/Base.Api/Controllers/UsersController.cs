@@ -1,6 +1,5 @@
-﻿using Base.Api.Application.Dtos;
-using Base.Api.Application.Dtos.User;
-using Base.Api.Application.Interfaces.Services;
+﻿using Base.Api.Application.Interfaces.Services;
+using Base.Api.Application.Models.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -18,28 +17,28 @@ public class UsersController : BaseApiController
 
     [Authorize]
     [HttpPut]
-    public async Task<IActionResult> Update(UpdateUserDto model)
+    public async Task<IActionResult> Update(UpdateUserRequest model)
     {
         return Result(await _service.Update(model));
     }
 
     [Authorize]
     [HttpPut("password")]
-    public async Task<IActionResult> UpdatePassword(ChangePasswordModel model)
+    public async Task<IActionResult> UpdatePassword(ChangePasswordRequest model)
     {
         return Result(await _service.ChangePassword(model));
     }
 
     [HttpPost]
     [Route("login")]
-    public async Task<IActionResult> Login(LoginModel model)
+    public async Task<IActionResult> Login(LoginRequest model)
     {
         return Result(await _service.Login(model));
     }
 
     [HttpPost]
     [Route("register")]
-    public async Task<IActionResult> Register(RegisterModel model)
+    public async Task<IActionResult> Register(RegisterRequest model)
     {
         return Result(await _service.Register(model));
     }
@@ -51,13 +50,13 @@ public class UsersController : BaseApiController
     }
 
     [HttpPost("resetpassword")]
-    public async Task<IActionResult> ResetPassword(ResetPasswordModel model)
+    public async Task<IActionResult> ResetPassword(ResetPasswordRequest model)
     {
         return Result(await _service.ResetPassword(model));
     }
 
     [HttpPost("resetpassword-confirm")]
-    public async Task<IActionResult> ResetPasswordConfirm(ResetPasswordConfirmModel model)
+    public async Task<IActionResult> ResetPasswordConfirm(ResetPasswordConfirmRequest model)
     {
         return Result(await _service.ResetPasswordConfirm(model));
     }

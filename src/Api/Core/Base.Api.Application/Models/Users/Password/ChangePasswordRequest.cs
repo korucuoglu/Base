@@ -1,6 +1,6 @@
-﻿namespace Base.Api.Application.Dtos.User;
+﻿namespace Base.Api.Application.Models.Users;
 
-public class ChangePasswordModel
+public class ChangePasswordRequest
 {
     public string CurrentPassword { get; set; }
     public string NewPassword { get; set; }

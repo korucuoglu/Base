@@ -1,6 +1,6 @@
-﻿namespace Base.Api.Application.Dtos;
+﻿namespace Base.Api.Application.Models.Users;
 
-public class ResetPasswordConfirmModel
+public class ResetPasswordConfirmRequest
 {
     public string UserId { get; set; }
     public string Token { get; set; }

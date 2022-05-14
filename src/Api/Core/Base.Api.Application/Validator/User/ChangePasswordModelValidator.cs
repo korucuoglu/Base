@@ -1,9 +1,9 @@
-﻿using Base.Api.Application.Dtos.User;
+﻿using Base.Api.Application.Models.Users;
 using FluentValidation;
 
-namespace Base.Api.Application.Validations.User;
+namespace Base.Api.Application.Validator.User;
 
-public class ChangePasswordModelValidator : AbstractValidator<ChangePasswordModel>
+public class ChangePasswordModelValidator : AbstractValidator<ChangePasswordRequest>
 {
     public ChangePasswordModelValidator()
     {

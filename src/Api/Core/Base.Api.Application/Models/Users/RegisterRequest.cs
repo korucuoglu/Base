@@ -1,6 +1,6 @@
-﻿namespace Base.Api.Application.Dtos
+﻿namespace Base.Api.Application.Models.Users
 {
-    public class RegisterModel
+    public class RegisterRequest
     {
         public string Username { get; set; }
         public string Email { get; set; }

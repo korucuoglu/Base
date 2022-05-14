@@ -1,6 +1,6 @@
-﻿namespace Base.Api.Application.Dtos
+﻿namespace Base.Api.Application.Models.Users
 {
-    public class LoginModel
+    public class LoginRequest
     {
         public string Username { get; set; }
 

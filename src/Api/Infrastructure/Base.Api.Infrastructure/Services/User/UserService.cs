@@ -1,9 +1,8 @@
 ﻿using Base.Api.Application.Const;
-using Base.Api.Application.Dtos;
-using Base.Api.Application.Dtos.User;
 using Base.Api.Application.Dtos.Wrappers;
 using Base.Api.Application.Identity;
 using Base.Api.Application.Interfaces.Services;
+using Base.Api.Application.Models.Users;
 using Base.Api.Application.Services;
 using Base.Common.Event;
 using Microsoft.AspNetCore.Identity;
@@ -45,7 +44,7 @@ public class UserService : IUserService
         return Response<NoContent>.Success($"{CustomResponseMessages.EmailSended} {user.Email}", 201);
     }
 
-    public async Task<Response<string>> Login(LoginModel model)
+    public async Task<Response<string>> Login(LoginRequest model)
     {
         var user = await _userManager.FindByNameAsync(model.Username);
 
@@ -64,7 +63,7 @@ public class UserService : IUserService
         return Response<string>.Success(data: token, 200);
     }
 
-    public async Task<Response<NoContent>> Register(RegisterModel model)
+    public async Task<Response<NoContent>> Register(RegisterRequest model)
     {
         var user = new ApplicationUser()
         {
@@ -120,7 +119,7 @@ public class UserService : IUserService
         return await GetResult(user);
     }
 
-    public async Task<Response<NoContent>> ResetPassword(ResetPasswordModel model)
+    public async Task<Response<NoContent>> ResetPassword(ResetPasswordRequest model)
     {
         var user = await _userManager.FindByEmailAsync(model.Email);
 
@@ -144,7 +143,7 @@ public class UserService : IUserService
         return await GetResult(user);
     }
 
-    public async Task<Response<NoContent>> ResetPasswordConfirm(ResetPasswordConfirmModel model)
+    public async Task<Response<NoContent>> ResetPasswordConfirm(ResetPasswordConfirmRequest model)
     {
         var user = await _userManager.FindByIdAsync(_hashService.Decode(model.UserId).ToString());
 
@@ -172,7 +171,7 @@ public class UserService : IUserService
         return await GetResult(user);
     }
 
-    public async Task<Response<NoContent>> Update(UpdateUserDto model)
+    public async Task<Response<NoContent>> Update(UpdateUserRequest model)
     {
         var user = await _userManager.FindByIdAsync(_identityService.GetUserDecodeId.ToString());
 
@@ -212,7 +211,7 @@ public class UserService : IUserService
         return Response<NoContent>.Success(message: message, statusCode: 200);
     }
 
-    public async Task<Response<NoContent>> ChangePassword(ChangePasswordModel model)
+    public async Task<Response<NoContent>> ChangePassword(ChangePasswordRequest model)
     {
         var user = await _userManager.FindByIdAsync(_identityService.GetUserDecodeId.ToString());
 

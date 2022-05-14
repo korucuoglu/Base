@@ -1,6 +1,6 @@
-﻿namespace Base.Api.Application.Dtos.User;
+﻿namespace Base.Api.Application.Models.Users;
 
-public class UpdateUserDto
+public class UpdateUserRequest
 {
     public string UserName { get; set; }
     public string Email { get; set; }
