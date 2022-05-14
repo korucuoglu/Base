@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Base.Api.Application.Dtos.Categories;
 using Base.Api.Application.Dtos.Notes;
+using Base.Api.Application.Entities.Notes;
 using Base.Api.Application.Features.Categories;
 using Base.Api.Application.Features.Notes;
 using Base.Api.Application.Interfaces.Services;
@@ -31,7 +32,7 @@ public class GeneralMapping : Profile
         CreateMap<Note, NoteDto>().
                ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Encode(src.Id)));
 
-        CreateMap<PublicNoteEntity, PublicNoteDto>().
+        CreateMap<PublicNote, PublicNoteDto>().
               ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Encode(src.Id)));
 
         CreateMap<AddNoteRequest, Note>().ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => hashService.Decode(src.CategoryId)));

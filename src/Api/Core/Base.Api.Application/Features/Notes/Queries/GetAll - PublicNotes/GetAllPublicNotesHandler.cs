@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Base.Api.Application.Dtos.Notes;
 using Base.Api.Application.Dtos.Wrappers;
+using Base.Api.Application.Entities.Notes;
 using Base.Api.Application.Interfaces.UnitOfWork;
 using MediatR;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ public class GetAllPublicNotesHandler : IRequestHandler<GetAllPublicNotesRequest
         var query = @"SELECT id, title, content, users.""UserName"" AS username FROM notes
         JOIN ""AspNetUsers"" users ON users.""Id"" = notes.""ApplicationUserId"" WHERE notes.is_public = TRUE";
 
-        var entities = _unitOfWork.NoteReadRepository().ExecuteQuery<PublicNoteEntity>(query);
+        var entities = _unitOfWork.NoteReadRepository().ExecuteQuery<PublicNote>(query);
 
         var dtos = _mapper.Map<List<PublicNoteDto>>(entities);
 
