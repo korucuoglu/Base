@@ -1,9 +1,28 @@
-<template>Note Details</template>
+<template>
+  <div v-if="item != null" class="container mt-5">
+    <h1 class="text-center text-capitalize">{{ item.title }}</h1>
+    <br />
+    <div class="row">
+      <div class="col-10 offset-1">
+        <p class="lead lh-lg">{{ item.content }}</p>
+        <p class="h5 text-end">
+          written by {{ item.username }} at 19 July 2021
+        </p>
+      </div>
+    </div>
+  </div>
+</template>
 
 <script>
+import NoteService from '@/services/note'
 export default {
-  mounted() {
-    console.log(this.$route.params)
+  data() {
+    return {
+      item: null,
+    }
+  },
+  async mounted() {
+    this.item = (await NoteService.getById(this.$route.params.id)) || {}
   },
 }
 </script>
