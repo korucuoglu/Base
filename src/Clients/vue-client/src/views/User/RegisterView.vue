@@ -1,31 +1,31 @@
 <template>
   <div>
-    <div class="container loginPage">
+    <div class="container">
       <div class="row">
         <div class="col-4 offset-4">
           <div class="card">
-            <div class="card-header text-center">Kayıt Ol</div>
+            <div class="card-header text-center">Sign Up</div>
             <div class="card-body">
               <div class="mb-3">
-                <label class="form-label">Kullanıcı Adı:</label>
+                <label class="form-label">Username</label>
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="username"
+                  placeholder="korucuoglu"
                   v-model="userData.username"
                 />
               </div>
               <div class="mb-3">
-                <label class="form-label">E-posta adresi</label>
+                <label class="form-label">Email</label>
                 <input
                   type="email"
                   class="form-control"
-                  placeholder="info@Base.com"
+                  placeholder="info@base.com"
                   v-model="userData.email"
                 />
               </div>
               <div class="mb-3">
-                <label class="form-label">Şifre:</label>
+                <label class="form-label">Password:</label>
                 <input
                   type="password"
                   class="form-control"
@@ -35,16 +35,19 @@
               </div>
               <div class="mb-3 d-flex justify-content-end align-items-center">
                 <button class="btn btn-sm btn-primary" @click="onSubmit">
-                  Kayıt Ol
+                  Sign Up
                 </button>
               </div>
             </div>
             <div class="card-footer text-center">
-              <router-link
-                :to="{ name: 'LoginView' }"
-                class="p-0 m-0 btn btn-link text-primary"
-                >Zaten üyeyim
-              </router-link>
+              <p>
+                Already have an account?
+                <router-link
+                  :to="{ name: 'LoginView' }"
+                  class="p-0 m-0 btn btn-link text-primary"
+                  >Log In
+                </router-link>
+              </p>
             </div>
           </div>
         </div>

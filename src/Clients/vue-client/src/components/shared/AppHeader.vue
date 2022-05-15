@@ -36,18 +36,18 @@
                   <router-link
                     class="dropdown-item"
                     :to="{ name: 'ProfilView' }"
-                    >Profil</router-link
+                    >Profile</router-link
                   >
                 </li>
                 <li>
                   <router-link
                     class="dropdown-item"
                     :to="{ name: 'SecurityView' }"
-                    >Hesap Güvenliği</router-link
+                    >Account Security</router-link
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" @click="Logout">Çıkış Yap</a>
+                  <a class="dropdown-item" @click="Logout">Logout</a>
                 </li>
               </ul>
             </li>

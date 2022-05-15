@@ -3,10 +3,10 @@
     <div class="row mt-5">
       <div class="col-4 offset-4">
         <div class="card">
-          <div class="card-header text-center">Hesap Detayları</div>
+          <div class="card-header text-center">Account Details</div>
           <div class="card-body">
             <div class="mb-3">
-              <label class="form-label">Kullanıcı Adı</label>
+              <label class="form-label">Username</label>
               <input
                 type="text"
                 class="form-control"
@@ -15,7 +15,7 @@
               />
             </div>
             <div class="mb-3">
-              <label class="form-label">Mevcut Şifreniz:</label>
+              <label class="form-label">Current Password</label>
               <input
                 type="password"
                 class="form-control"
@@ -23,7 +23,7 @@
               />
             </div>
             <div class="mb-3">
-              <label class="form-label">Yeni Şifreniz:</label>
+              <label class="form-label">New Password</label>
               <input
                 type="password"
                 class="form-control"
@@ -31,7 +31,7 @@
               />
             </div>
             <div class="mb-3">
-              <label class="form-label">Tekrar Yeni Şifreniz:</label>
+              <label class="form-label">New Password Again</label>
               <input
                 type="password"
                 class="form-control"
@@ -45,7 +45,7 @@
                 @click.prevent="update"
                 :disabled="!activeButton"
               >
-                Güncelle
+                Save
               </button>
             </div>
           </div>

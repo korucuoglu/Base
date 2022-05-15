@@ -3,10 +3,10 @@
     <div class="row mt-5">
       <div class="col-4 offset-4">
         <div class="card">
-          <div class="card-header text-center">Hesap Detayları</div>
+          <div class="card-header text-center">Profile</div>
           <div class="card-body">
             <div class="mb-3">
-              <label class="form-label">Kullanıcı Adı</label>
+              <label class="form-label">Username</label>
               <input
                 type="text"
                 class="form-control"
@@ -14,7 +14,7 @@
               />
             </div>
             <div class="mb-3">
-              <label class="form-label">E-posta adresi</label>
+              <label class="form-label">Email</label>
               <input
                 type="email"
                 class="form-control"
@@ -22,7 +22,7 @@
               />
             </div>
             <div class="mb-3">
-              <label class="form-label">Şifreniz</label>
+              <label class="form-label">Password</label>
               <input
                 type="password"
                 class="form-control"
@@ -35,7 +35,7 @@
                 @click.prevent="update"
                 :disabled="!activeButton"
               >
-                Güncelle
+                Save
               </button>
             </div>
           </div>
