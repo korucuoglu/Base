@@ -6,7 +6,8 @@
       <div class="col-10 offset-1">
         <p class="lead lh-lg">{{ item.content }}</p>
         <p class="h5 text-end">
-          written by {{ item.username }} at 19 July 2021
+          written by {{ item.username }} at
+          {{ this.timesAgo(item.createdDate) }}
         </p>
       </div>
     </div>
