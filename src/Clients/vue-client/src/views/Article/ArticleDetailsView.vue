@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import NoteService from '@/services/note'
+import ArticleService from '@/services/article'
 export default {
   data() {
     return {
@@ -22,7 +22,7 @@ export default {
     }
   },
   async mounted() {
-    this.item = (await NoteService.getById(this.$route.params.id)) || {}
+    this.item = await ArticleService.getById(this.$route.params.id)
   },
 }
 </script>

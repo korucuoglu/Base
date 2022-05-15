@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-5">
-    <h1 class="text-center">Public Articles</h1>
+    <h1 class="text-center">My Articles</h1>
     <br />
     <ArticleList :items="items" />
   </div>
@@ -21,7 +21,7 @@ export default {
   },
 
   async mounted() {
-    this.items = await ArticleService.getPublicNotes()
+    this.items = await ArticleService.getMyNotes()
   },
 }
 </script>

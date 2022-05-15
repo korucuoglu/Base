@@ -4,7 +4,7 @@
       <div class="card-body">
         <router-link
           :to="{
-            name: 'NoteDetailsView',
+            name: 'ArticleDetailsView',
             params: { id: item.id, public: true },
           }"
           class="card-title h5"
