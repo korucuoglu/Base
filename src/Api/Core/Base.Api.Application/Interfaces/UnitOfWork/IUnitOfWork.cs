@@ -9,17 +9,13 @@ namespace Base.Api.Application.Interfaces.UnitOfWork
     {
         IReadRepository<T> ReadRepository<T>() where T : BaseEntity;
 
-        IProductReadRepository ProductReadRepository();
-
-        IProductWriteRepository ProductWriteRepository();
-
         ICategoryReadRepository CategoryReadRepository();
 
         ICategoryWriteRepository CategoryWriteRepository();
 
-        INoteReadRepository NoteReadRepository();
+        IArticleReadRepository ArticleReadRepository();
 
-        INoteWriteRepository NoteWriteRepository();
+        IArticleWriteRepository ArticleWriteRepository();
 
         Task<int> SaveChangesAsync();
     }

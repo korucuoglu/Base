@@ -22,7 +22,7 @@ public class DeleteMyCategoryByIdHandler : IRequestHandler<DeleteMyCategoryByIdR
     {
         var entity = await _unitOfWork.CategoryReadRepository().FindAsync(_hashService.Decode(request.Id), true);
 
-        if (_unitOfWork.NoteReadRepository().Any(x => x.CategoryId == entity.Id))
+        if (_unitOfWork.ArticleReadRepository().Any(x => x.CategoryId == entity.Id))
         {
             return Response<NoContent>.Fail("İçerisinde not bulunan kategori silinemez", 500);
         }

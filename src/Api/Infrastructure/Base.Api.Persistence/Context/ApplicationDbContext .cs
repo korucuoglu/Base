@@ -2,6 +2,7 @@
 using Base.Api.Application.Services;
 using Base.Api.Domain.Common;
 using Base.Api.Domain.Entities;
+using Base.Api.Persistence.EntityConfigurations.Seed;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,7 +17,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
     private readonly IIdentityService _identityService;
 
     public DbSet<Category> Categories { get; set; }
-    public DbSet<Note> Notes { get; set; }
+    public DbSet<Article> Articles { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IIdentityService identityService) : base(options)
     {
@@ -30,6 +31,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
     {
         base.OnModelCreating(builder);
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        Seed.AddData(builder);
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

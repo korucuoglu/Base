@@ -7,5 +7,5 @@ namespace Base.Api.Application.Identity;
 public class ApplicationUser : IdentityUser<int>
 {
     public virtual ICollection<Category> Categories { get; set; }
-    public virtual ICollection<Note> Notes { get; set; }
+    public virtual ICollection<Article> Articles { get; set; }
 }

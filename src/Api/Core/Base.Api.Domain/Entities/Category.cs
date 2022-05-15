@@ -10,5 +10,5 @@ public class Category : BaseEntity, IUpdateable, IAuthRequired
     public DateTime? UpdatedDate { get; set; }
     public int ApplicationUserId { get; set; }
 
-    public virtual ICollection<Note> Notes { get; set; }
+    public virtual ICollection<Article> Articles { get; set; }
 }

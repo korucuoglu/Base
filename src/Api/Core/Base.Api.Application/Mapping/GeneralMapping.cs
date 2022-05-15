@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Base.Api.Application.Features.Categories;
-using Base.Api.Application.Features.Notes;
+using Base.Api.Application.Features.Articles;
 using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Models.Dtos;
 using Base.Api.Application.Models.Entities;
@@ -28,15 +28,15 @@ public class GeneralMapping : Profile
 
         #region Notes
 
-        CreateMap<Note, NoteDto>().
+        CreateMap<Article, ArticleDto>().
                ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Encode(src.Id)));
 
-        CreateMap<NoteRawSqlQueryModel, NoteDto>().
+        CreateMap<ArticleRawSqlQueryModel, ArticleDto>().
               ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Encode(src.Id)));
 
-        CreateMap<AddNoteRequest, Note>().ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => hashService.Decode(src.CategoryId)));
+        CreateMap<AddArticleRequest, Article>().ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => hashService.Decode(src.CategoryId)));
 
-        CreateMap<UpdateNoteRequest, Note>()
+        CreateMap<UpdateArticleRequest, Article>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Decode(src.Id)))
                 .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => hashService.Decode(src.CategoryId)));
 

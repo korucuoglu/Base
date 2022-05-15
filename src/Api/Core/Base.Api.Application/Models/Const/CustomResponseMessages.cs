@@ -16,7 +16,7 @@ public static class CustomResponseMessages
 
     #region NoteService
 
-    public const string NoteNotFound = "No such note was found.";
+    public const string ArticleNotFound = "No such note was found.";
 
     #endregion NoteService
 }

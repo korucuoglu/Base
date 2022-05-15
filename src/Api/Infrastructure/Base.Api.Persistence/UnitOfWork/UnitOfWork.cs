@@ -25,16 +25,6 @@ namespace Base.Api.Persistence.UnitOfWork
 
         public async ValueTask DisposeAsync() => await _context.DisposeAsync();
 
-        public IProductReadRepository ProductReadRepository()
-        {
-            return new ProductReadRepository(_context);
-        }
-
-        public IProductWriteRepository ProductWriteRepository()
-        {
-            return new ProductWriteRepository(_context);
-        }
-
         public ICategoryReadRepository CategoryReadRepository()
         {
             return new CategoryReadRepository(_context);
@@ -45,14 +35,14 @@ namespace Base.Api.Persistence.UnitOfWork
             return new CategoryWriteRepository(_context);
         }
 
-        public INoteReadRepository NoteReadRepository()
+        public IArticleReadRepository ArticleReadRepository()
         {
-            return new NoteReadRepository(_context);
+            return new ArticleReadRepository(_context);
         }
 
-        public INoteWriteRepository NoteWriteRepository()
+        public IArticleWriteRepository ArticleWriteRepository()
         {
-            return new NoteWriteRepository(_context);
+            return new ArticleWriteRepository(_context);
         }
     }
 }
