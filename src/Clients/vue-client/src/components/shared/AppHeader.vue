@@ -10,10 +10,16 @@
       <div class="collapse navbar-collapse d-flex justify-content-between">
         <div class="navbar-nav">
           <router-link
-            class="nav-link active"
+            class="nav-link"
             active-class="active"
             :to="{ name: 'HomeView' }"
             >Home</router-link
+          >
+          <router-link
+            class="nav-link"
+            active-class="active"
+            :to="{ name: 'MyNotesView' }"
+            >My Notes</router-link
           >
         </div>
         <div class="navbar-nav" v-if="!isAuthenticated">

@@ -13,6 +13,12 @@ const routes = [
     component: import('@/views/User/LoginView'),
   },
   {
+    path: '/my-notes',
+    name: 'MyNotesView',
+    meta: { authRequired: true },
+    component: import('@/views/Note/MyNotesView'),
+  },
+  {
     path: '/note/:id',
     name: 'NoteDetailsView',
     component: import('@/views/Note/NoteDetailsView'),

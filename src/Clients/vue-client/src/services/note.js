@@ -9,6 +9,10 @@ const service = {
     var result = await http.get(`notes/${id}`)
     return result.data?.value
   },
+  async getMyNotes() {
+    var result = await http.get(`notes`)
+    return result.data?.value
+  },
 }
 
 export default service
