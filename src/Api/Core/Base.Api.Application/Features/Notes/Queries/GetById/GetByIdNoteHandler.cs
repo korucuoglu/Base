@@ -1,5 +1,6 @@
 ﻿using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Interfaces.UnitOfWork;
+using Base.Api.Application.Models.Const;
 using Base.Api.Application.Models.Dtos;
 using Base.Api.Application.Services;
 using MediatR;
@@ -30,19 +31,19 @@ public class GetByIdNoteHandler : IRequestHandler<GetByIdNoteRequest, Response<N
 
         if (!repository.Any(x => x.Id == decodeId)) // is id valid?
         {
-            return Response<NoteDto>.Fail("Not Found", 500);
+            return Response<NoteDto>.Fail(CustomResponseMessages.NoteNotFound, 500);
         }
 
         if (!repository.Any(x => x.Id == decodeId && x.IsPublic)) // iss data private
         {
             if (!_identityService.IsAuthenticated) // is user not logged in throw error
             {
-                return Response<NoteDto>.Fail("Not Found", 500);
+                return Response<NoteDto>.Fail(CustomResponseMessages.NoteNotFound, 500);
             }
 
             if (!repository.Any(x => x.Id == decodeId && x.ApplicationUserId == _identityService.GetUserDecodeId))
             { // data is private and it is not mine.
-                return Response<NoteDto>.Fail("Not Found", 500);
+                return Response<NoteDto>.Fail(CustomResponseMessages.NoteNotFound, 500);
             }
 
             return await _mediator.Send(new GetMyNoteByIdRequest() { Id = decodeId }); // data is private and it is mine.
