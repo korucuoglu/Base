@@ -13,6 +13,10 @@ const service = {
     var result = await http.get(`articles`)
     return result.data?.value
   },
+  async getArticlesByCategoryId(id) {
+    var result = await http.get(`categories/${id}/articles`)
+    return result.data?.value
+  },
 }
 
 export default service

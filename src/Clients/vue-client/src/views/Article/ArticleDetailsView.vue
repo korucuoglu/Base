@@ -7,7 +7,7 @@
         <p class="lead lh-lg">{{ item.content }}</p>
         <p class="h5 text-end">
           written by {{ item.username }} at
-          {{ this.timesAgo(item.createdDate) }}
+          {{ this.timesFormat(item.createdDate) }}
         </p>
       </div>
     </div>

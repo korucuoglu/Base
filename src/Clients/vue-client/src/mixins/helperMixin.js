@@ -5,7 +5,7 @@ export default {
     copy(myObject) {
       return JSON.parse(JSON.stringify(myObject))
     },
-    timesAgo(time) {
+    timesFormat(time) {
       return moment(time).format('D MMM YYYY')
     },
   },

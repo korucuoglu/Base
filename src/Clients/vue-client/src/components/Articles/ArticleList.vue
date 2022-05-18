@@ -1,15 +1,15 @@
 <template>
   <div class="row">
-    <NotesItem v-for="item in items" :key="item.id" :item="item" />
+    <ArticleListItem v-for="item in items" :key="item.id" :item="item" />
   </div>
 </template>
 
 <script>
-import NotesItem from './item.vue'
+import ArticleListItem from './ArticleListItem.vue'
 export default {
   name: 'Home',
   components: {
-    NotesItem,
+    ArticleListItem,
   },
 
   props: ['items'],
