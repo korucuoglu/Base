@@ -7,6 +7,12 @@
       <div class="col-md-9">
         <h1 class="text-center">My Articles</h1>
         <br />
+        <p>
+          <router-link :to="{ name: 'AddArticleView' }" class="btn btn-success">
+            <i class="fas fa-plus-circle"></i> Add New Article
+          </router-link>
+        </p>
+
         <ArticleList :items="items" />
       </div>
     </div>

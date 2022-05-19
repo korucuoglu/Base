@@ -19,6 +19,12 @@ const routes = [
     component: import('@/views/Article/MyArticlesView'),
   },
   {
+    path: '/add-article',
+    name: 'AddArticleView',
+    meta: { authRequired: true },
+    component: import('@/views/Article/AddArticleView'),
+  },
+  {
     path: '/note/:id',
     name: 'ArticleDetailsView',
     component: import('@/views/Article/ArticleDetailsView'),

@@ -3,8 +3,8 @@
     <a
       href="#"
       @click="selectedCategory = null"
-      class="list-group-item list-group-item-action active"
-      aria-current="true"
+      class="list-group-item list-group-item-action"
+      :class="{ active: !selectedCategory }"
     >
       Tüm Kategoriler
     </a>
@@ -14,6 +14,7 @@
       href="#"
       @click="selectedCategory = category.id"
       class="list-group-item list-group-item-action"
+      :class="{ active: selectedCategory == category.id }"
       >{{ `${category.title} (${category.articleCount})` }}
     </a>
   </div>
