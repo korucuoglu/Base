@@ -1,4 +1,4 @@
-﻿using Base.Api.Application.Identity;
+﻿using Base.Api.Domain.Entities;
 
 namespace Base.Api.Application.Interfaces.Services
 {

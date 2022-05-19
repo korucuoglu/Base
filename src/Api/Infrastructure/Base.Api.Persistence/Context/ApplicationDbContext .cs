@@ -1,5 +1,4 @@
-﻿using Base.Api.Application.Identity;
-using Base.Api.Application.Services;
+﻿using Base.Api.Application.Services;
 using Base.Api.Domain.Common;
 using Base.Api.Domain.Entities;
 using Base.Api.Persistence.EntityConfigurations.Seed;

@@ -1,9 +1,9 @@
-﻿using Base.Api.Application.Identity;
-using Base.Api.Application.Interfaces.Services;
+﻿using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Models.Const;
 using Base.Api.Application.Models.Dtos;
 using Base.Api.Application.Models.Users;
 using Base.Api.Application.Services;
+using Base.Api.Domain.Entities;
 using Base.Common.Event;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;

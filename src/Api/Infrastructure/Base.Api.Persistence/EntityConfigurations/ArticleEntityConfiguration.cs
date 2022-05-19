@@ -16,5 +16,6 @@ public class ArticleEntityConfiguration : BaseEntityConfiguration<Article>
         builder.HasIndex(x => new { x.ApplicationUserId, x.Title }).IsUnique(true);
 
         builder.HasOne(x => x.Category).WithMany(x => x.Articles).HasForeignKey(x => x.CategoryId).OnDelete(DeleteBehavior.NoAction);
+        builder.HasOne(x => x.ApplicationUser).WithMany(x => x.Articles).HasForeignKey(x => x.ApplicationUserId).OnDelete(DeleteBehavior.NoAction);
     }
 }

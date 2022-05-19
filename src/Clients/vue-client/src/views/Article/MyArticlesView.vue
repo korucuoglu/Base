@@ -32,6 +32,7 @@ export default {
 
   async mounted() {
     this.items = await ArticleService.getMyNotes()
+    this.$store.dispatch('categories/fetchList')
   },
 
   watch: {

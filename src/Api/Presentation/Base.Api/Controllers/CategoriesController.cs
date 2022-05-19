@@ -36,7 +36,7 @@ public class CategoriesController : BaseApiController
         return Result(data);
     }
 
-    [HttpGet("{id}/notes")]
+    [HttpGet("{id}/articles")]
     [ServiceFilter(typeof(NotFoundFilterAttribute<Category>))]
     public async Task<IActionResult> GetNotesByCategoryId(string id)
     {

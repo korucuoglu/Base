@@ -1,5 +1,4 @@
-﻿using Base.Api.Application.Identity;
-using Base.Api.Domain.Entities;
+﻿using Base.Api.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;

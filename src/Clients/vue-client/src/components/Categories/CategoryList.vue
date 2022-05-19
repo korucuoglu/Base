@@ -9,7 +9,7 @@
       Tüm Kategoriler
     </a>
     <a
-      v-for="category in categories"
+      v-for="category in categoryList"
       :key="category.id"
       href="#"
       @click="selectedCategory = category.id"
@@ -20,16 +20,17 @@
 </template>
 
 <script>
-import CategoryService from '@/services/category'
+import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
-      categories: null,
       selectedCategory: null,
     }
   },
-  async mounted() {
-    this.categories = await CategoryService.getAll()
+  computed: {
+    ...mapGetters({
+      categoryList: 'categories/categoryList',
+    }),
   },
   watch: {
     async selectedCategory(n) {

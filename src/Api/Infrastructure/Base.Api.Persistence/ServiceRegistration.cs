@@ -1,5 +1,5 @@
-﻿using Base.Api.Application.Identity;
-using Base.Api.Application.Interfaces.UnitOfWork;
+﻿using Base.Api.Application.Interfaces.UnitOfWork;
+using Base.Api.Domain.Entities;
 using Base.Api.Persistence.Context;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
