@@ -1,9 +1,10 @@
-﻿using AutoMapper;
+﻿using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Interfaces.UnitOfWork;
 using Base.Api.Application.Models.Dtos;
 using Base.Api.Application.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,13 +13,13 @@ namespace Base.Api.Application.Features.Articles;
 public class GetMyArticleByIdHandler : IRequestHandler<GetMyArticleByIdRequest, Response<ArticleDto>>
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IMapper _mapper;
+    private readonly HashService _hashService;
     private readonly IIdentityService _identityService;
 
-    public GetMyArticleByIdHandler(IUnitOfWork unitOfWork, IMapper mapper, IIdentityService identityService)
+    public GetMyArticleByIdHandler(IUnitOfWork unitOfWork, HashService hashService, IIdentityService identityService)
     {
         _unitOfWork = unitOfWork;
-        _mapper = mapper;
+        _hashService = hashService;
         _identityService = identityService;
     }
 
@@ -27,7 +28,15 @@ public class GetMyArticleByIdHandler : IRequestHandler<GetMyArticleByIdRequest, 
         var entity = _unitOfWork.ArticleReadRepository().
             Where(x => x.Id == request.Id && x.ApplicationUserId == _identityService.GetUserDecodeId);
 
-        var dto = await _mapper.ProjectTo<ArticleDto>(entity).FirstOrDefaultAsync();
+        var dto = await entity.Select(x => new ArticleDto()
+        {
+            Id = _hashService.Encode(x.Id),
+            Username = x.ApplicationUser.UserName,
+            Title = x.Title,
+            Content = x.Content,
+            CreatedDate = x.CreatedDate,
+            IsPublic = x.IsPublic
+        }).FirstOrDefaultAsync();
 
         return Response<ArticleDto>.Success(dto, 200);
     }

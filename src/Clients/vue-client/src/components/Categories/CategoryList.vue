@@ -14,8 +14,8 @@
       href="#"
       @click="selectedCategory = category.id"
       class="list-group-item list-group-item-action"
-      >{{ category.title }}</a
-    >
+      >{{ `${category.title} (${category.articleCount})` }}
+    </a>
   </div>
 </template>
 

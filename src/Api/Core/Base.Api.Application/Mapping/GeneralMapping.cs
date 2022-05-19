@@ -3,7 +3,6 @@ using Base.Api.Application.Features.Categories;
 using Base.Api.Application.Features.Articles;
 using Base.Api.Application.Interfaces.Services;
 using Base.Api.Application.Models.Dtos;
-using Base.Api.Application.Models.Entities;
 using Base.Api.Domain.Entities;
 
 namespace Base.Api.Application.Mapping;
@@ -30,9 +29,6 @@ public class GeneralMapping : Profile
 
         CreateMap<Article, ArticleDto>().
                ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Encode(src.Id)));
-
-        CreateMap<ArticleRawSqlQueryModel, ArticleDto>().
-              ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Encode(src.Id)));
 
         CreateMap<AddArticleRequest, Article>().ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => hashService.Decode(src.CategoryId)));
 
