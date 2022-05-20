@@ -8,6 +8,12 @@ const service = {
     })
   },
 
+  update(userData) {
+    http.put('/articles', userData).then(() => {
+      router.push({ name: 'ArticleDetailsView', params: { id: userData.id } })
+    })
+  },
+
   async getPublicNotes() {
     var result = await http.get('articles/public')
     return result.data?.value

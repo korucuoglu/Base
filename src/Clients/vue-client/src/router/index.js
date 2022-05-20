@@ -25,7 +25,7 @@ const routes = [
     component: import('@/views/Article/AddArticleView'),
   },
   {
-    path: '/note/:id',
+    path: '/article/:id',
     name: 'ArticleDetailsView',
     component: import('@/views/Article/ArticleDetailsView'),
   },

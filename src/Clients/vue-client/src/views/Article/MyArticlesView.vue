@@ -1,10 +1,10 @@
 <template>
   <div class="container mt-5">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-3">
         <CategoryList @selected-category="selectedCategory = $event" />
       </div>
-      <div class="col-md-9">
+      <div class="col-9">
         <h1 class="text-center">My Articles</h1>
         <br />
         <p>

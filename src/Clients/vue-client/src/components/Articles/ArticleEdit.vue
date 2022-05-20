@@ -1,8 +1,12 @@
 <template>
+  <pre>
+  {{ this.userData }}
+</pre
+  >
   <div class="container mt-5">
     <div class="card card-outline-secondary">
       <div class="card-body">
-        <h3 class="text-center fw-bolder">Add New Article</h3>
+        <h3 class="text-center fw-bolder">Edit Article</h3>
         <div class="form-group mt-3 p-2">
           <label class="form-label fw-bolder">Title</label>
           <input
@@ -16,7 +20,7 @@
           <label class="form-label fw-bolder">Content</label>
           <textarea
             cols="3"
-            rows="3"
+            rows="5"
             class="form-control"
             required="required"
             type="text"
@@ -26,11 +30,11 @@
         <div class="form-group mt-3 p-2">
           <label class="form-label fw-bolder">Category</label>
           <select class="form-control" v-model="userData.categoryId">
-            <option disabled>Please select one category</option>
             <option
               v-for="category in categoryList"
               :key="category.id"
               :value="category.id"
+              :selected="userData.categoryId == category.id"
             >
               {{ category.title }}
             </option>
@@ -45,36 +49,39 @@
             id="flexCheckDefault"
           />
         </div>
-        <button class="btn btn-primary" @click="onSave">Submit</button>
+        <button
+          class="btn btn-primary me-4"
+          @click="this.$emit('update', userData)"
+        >
+          Save
+        </button>
+        <button class="btn btn-warning" @click="this.$emit('cancel')">
+          Cancel
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import ArticleService from '@/services/article'
 import { mapGetters } from 'vuex'
-import articleService from '@/services/article'
 export default {
+  props: ['item'],
+  data() {
+    return {
+      userData: this.copy(this.item),
+    }
+  },
   computed: {
     ...mapGetters({
       categoryList: 'categories/categoryList',
     }),
   },
 
-  data() {
-    return {
-      userData: {
-        title: null,
-        content: null,
-        categoryId: null,
-        isPublic: true,
-      },
-    }
-  },
-
   methods: {
     onSave() {
-      articleService.add(this.userData)
+      ArticleService.update(this.userData)
     },
   },
 }

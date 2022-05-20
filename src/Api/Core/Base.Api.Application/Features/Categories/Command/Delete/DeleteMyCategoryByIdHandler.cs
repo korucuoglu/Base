@@ -24,7 +24,7 @@ public class DeleteMyCategoryByIdHandler : IRequestHandler<DeleteMyCategoryByIdR
 
         if (_unitOfWork.ArticleReadRepository().Any(x => x.CategoryId == entity.Id))
         {
-            return Response<NoContent>.Fail("İçerisinde not bulunan kategori silinemez", 500);
+            return Response<NoContent>.Fail("İçerisinde makale bulunan kategori silinemez", 500);
         }
 
         _unitOfWork.CategoryWriteRepository().Remove(entity);
