@@ -15,7 +15,7 @@
           {{ item.content }}
         </p>
       </div>
-      <div class="buttons">
+      <div v-if="false" class="buttons">
         <i
           class="fa-solid fa-trash text-danger"
           @click="deleteItem(item.id)"
@@ -28,8 +28,14 @@
 
 <script>
 import ArticleService from '@/services/article'
+import { mapGetters } from 'vuex'
 export default {
   props: ['item'],
+  computed: {
+    ...mapGetters({
+      currentUser: 'users/currentUser',
+    }),
+  },
   methods: {
     deleteItem(id) {
       ArticleService.delete(id)

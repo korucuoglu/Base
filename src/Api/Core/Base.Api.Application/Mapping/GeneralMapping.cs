@@ -25,10 +25,11 @@ public class GeneralMapping : Profile
 
         #endregion Categories
 
-        #region Notes
+        #region Articles
 
         CreateMap<Article, ArticleDto>().
-               ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Encode(src.Id)));
+               ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Encode(src.Id))).
+               ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => hashService.Encode(src.CategoryId)));
 
         CreateMap<AddArticleRequest, Article>().ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => hashService.Decode(src.CategoryId)));
 
@@ -36,6 +37,6 @@ public class GeneralMapping : Profile
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => hashService.Decode(src.Id)))
                 .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => hashService.Decode(src.CategoryId)));
 
-        #endregion Notes
+        #endregion Articles
     }
 }
