@@ -7,12 +7,17 @@ const service = {
       router.push({ name: 'ArticleDetailsView', params: { id: data.value } })
     })
   },
+  delete(id) {
+    http.delete(`articles/${id}`).then(() => {
+      router.push({ name: 'MyArticlesView' })
+    })
+  },
   async update(userData) {
     var result = http.put('/articles', userData)
     return result
   },
 
-  async getPublicNotes() {
+  async getPublicArticles() {
     var result = await http.get('articles/public')
     return result.data?.value
   },
@@ -21,7 +26,7 @@ const service = {
     var result = await http.get(`articles/${id}`)
     return result.data?.value
   },
-  async getMyNotes() {
+  async getMyArticles() {
     var result = await http.get(`articles`)
     return result.data?.value
   },

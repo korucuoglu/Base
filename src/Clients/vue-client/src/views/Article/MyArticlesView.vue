@@ -37,14 +37,14 @@ export default {
   },
 
   async mounted() {
-    this.items = await ArticleService.getMyNotes()
+    this.items = await ArticleService.getMyArticles()
     this.$store.dispatch('categories/fetchList')
   },
 
   watch: {
     async selectedCategory(n) {
       if (n == null) {
-        this.items = await ArticleService.getMyNotes()
+        this.items = await ArticleService.getMyArticles()
         return
       }
       this.items = await ArticleService.getArticlesByCategoryId(n)

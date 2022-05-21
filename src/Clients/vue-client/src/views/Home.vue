@@ -21,7 +21,7 @@ export default {
   },
 
   async mounted() {
-    this.items = await ArticleService.getPublicNotes()
+    this.items = await ArticleService.getPublicArticles()
   },
 }
 </script>
