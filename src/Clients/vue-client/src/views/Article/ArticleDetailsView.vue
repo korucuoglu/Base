@@ -43,11 +43,13 @@ export default {
       return this.editMode ? 'ArticleEdit' : 'ArticleRead'
     },
   },
-
   methods: {
     async Update(data) {
+      var result = await ArticleService.update(data)
+      if (result.status == 204) {
+        this.item = data
+      }
       this.editMode = false
-      await ArticleService.update(data)
     },
   },
 }

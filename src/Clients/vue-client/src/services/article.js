@@ -7,11 +7,9 @@ const service = {
       router.push({ name: 'ArticleDetailsView', params: { id: data.value } })
     })
   },
-
-  update(userData) {
-    http.put('/articles', userData).then(() => {
-      router.push({ name: 'ArticleDetailsView', params: { id: userData.id } })
-    })
+  async update(userData) {
+    var result = http.put('/articles', userData)
+    return result
   },
 
   async getPublicNotes() {

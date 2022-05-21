@@ -64,7 +64,6 @@
 </template>
 
 <script>
-import ArticleService from '@/services/article'
 import { mapGetters } from 'vuex'
 export default {
   props: ['item'],
@@ -77,12 +76,6 @@ export default {
     ...mapGetters({
       categoryList: 'categories/categoryList',
     }),
-  },
-
-  methods: {
-    onSave() {
-      ArticleService.update(this.userData)
-    },
   },
 }
 </script>
