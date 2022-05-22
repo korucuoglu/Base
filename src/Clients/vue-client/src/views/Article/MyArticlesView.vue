@@ -12,8 +12,7 @@
             <i class="fas fa-plus-circle"></i> Add New Article
           </router-link>
         </p>
-
-        <ArticleList :items="items" />
+        <ArticleList :items="getMyArticles" />
       </div>
     </div>
   </div>
@@ -22,7 +21,8 @@
 <script>
 import ArticleList from '@/components/Articles/ArticleList'
 import CategoryList from '@/components/Categories/CategoryList'
-import ArticleService from '@/services/article'
+// import ArticleService from '@/services/article'
+import { mapGetters } from 'vuex'
 export default {
   name: 'Home',
   components: {
@@ -31,24 +31,22 @@ export default {
   },
   data() {
     return {
-      items: [],
       selectedCategory: null,
     }
   },
 
-  async mounted() {
-    this.items = await ArticleService.getMyArticles()
-    this.$store.dispatch('categories/fetchList')
+  computed: {
+    ...mapGetters({
+      MyArticles: 'articles/_myArticles',
+    }),
+    getMyArticles() {
+      return this.MyArticles(this.selectedCategory)
+    },
   },
 
-  watch: {
-    async selectedCategory(n) {
-      if (n == null) {
-        this.items = await ArticleService.getMyArticles()
-        return
-      }
-      this.items = await ArticleService.getArticlesByCategoryId(n)
-    },
+  async mounted() {
+    this.$store.dispatch('categories/fetchList')
+    this.$store.dispatch('articles/fetchList')
   },
 }
 </script>

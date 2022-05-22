@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import users from '@/store/modules/users'
+import articles from '@/store/modules/articles'
 import categories from '@/store/modules/categories'
 import createPersistedState from 'vuex-persistedstate'
 import SecureLS from 'secure-ls'
@@ -12,6 +13,7 @@ export default createStore({
   modules: {
     users,
     categories,
+    articles,
   },
   plugins: [
     createPersistedState({
