@@ -2,7 +2,7 @@
   <div v-if="item != null" class="container mt-5">
     <component
       :is="getComponent"
-      :item="item"
+      :item="getArticle"
       @cancel="this.editMode = false"
       @update="Update($event)"
     />
@@ -29,13 +29,18 @@ export default {
     }
   },
   async mounted() {
-    this.item = await ArticleService.getById(this.$route.params.id)
+    // this.item = await ArticleService.getById(this.$route.params.id)
+    this.item = this.$store.getters
   },
 
   computed: {
     ...mapGetters({
       currentUser: 'users/currentUser',
+      getArticleById: 'articles/_getListById',
     }),
+    getArticle() {
+      return this.getArticleById(this.$route.params.id)
+    },
     isOWner() {
       return this.item.username == this.currentUser?.username
     },

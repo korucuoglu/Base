@@ -19,18 +19,10 @@ public class ArticlesController : BaseApiController
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAllMyNotes()
-    {
-        var data = await _mediator.Send(new GetAllMyArticlesRequest());
-
-        return Result(data);
-    }
-
-    [HttpGet("public")]
     [AllowAnonymous]
-    public async Task<IActionResult> GetAllPublicNotes()
+    public async Task<IActionResult> GetAll()
     {
-        var data = await _mediator.Send(new GetAllPublicArticlesRequest());
+        var data = await _mediator.Send(new GetAllArticlesRequest());
 
         return Result(data);
     }

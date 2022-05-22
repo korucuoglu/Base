@@ -37,7 +37,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      MyArticles: 'articles/_myArticles',
+      MyArticles: 'articles/_getMyArticles',
     }),
     getMyArticles() {
       return this.MyArticles(this.selectedCategory)

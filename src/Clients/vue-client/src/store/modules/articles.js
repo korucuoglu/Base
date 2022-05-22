@@ -18,11 +18,22 @@ export default {
     },
   },
   getters: {
-    _myArticles: (state) => (categoryId) => {
-      if (categoryId) {
-        return state.list.filter((item) => item.categoryId === categoryId)
-      }
-      return state.list
+    _getMyArticles:
+      (state, getters, rootState, rootGetters) => (categoryId) => {
+        const userName = rootGetters['users/currentUser']?.username
+        if (categoryId) {
+          return state.list.filter(
+            (item) =>
+              item.categoryId === categoryId && item.username == userName
+          )
+        }
+        return state.list.filter((item) => item.username == userName)
+      },
+    _getListById: (state) => (id) => {
+      return state.list.find((item) => item.id === id)
+    },
+    getPublicArticles: (state) => {
+      return state.list.filter((item) => item.isPublic === true)
     },
   },
 }

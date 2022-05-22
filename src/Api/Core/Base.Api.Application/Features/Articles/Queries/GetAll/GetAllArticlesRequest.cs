@@ -4,6 +4,6 @@ using System.Collections.Generic;
 
 namespace Base.Api.Application.Features.Articles;
 
-public class GetAllPublicArticlesRequest : IRequest<Response<List<ArticleDto>>>
+public class GetAllArticlesRequest : IRequest<Response<List<ArticleDto>>>
 {
 }

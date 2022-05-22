@@ -2,26 +2,23 @@
   <div class="container mt-5">
     <h1 class="text-center">Public Articles</h1>
     <br />
-    <ArticleList :items="items" />
+    <ArticleList :items="getPublicArticles" />
   </div>
 </template>
 
 <script>
 import ArticleList from '@/components/Articles/ArticleList'
-import ArticleService from '@/services/article'
+import { mapGetters } from 'vuex'
 export default {
   name: 'Home',
   components: {
     ArticleList,
   },
-  data() {
-    return {
-      items: [],
-    }
-  },
 
-  async mounted() {
-    this.items = await ArticleService.getPublicArticles()
+  computed: {
+    ...mapGetters({
+      getPublicArticles: 'articles/getPublicArticles',
+    }),
   },
 }
 </script>
