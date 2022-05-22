@@ -12,7 +12,7 @@
             <i class="fas fa-plus-circle"></i> Add New Article
           </router-link>
         </p>
-        <ArticleList :items="getMyArticles" />
+        <ArticleList :items="getMyArticles" :removeButtonActive="true" />
       </div>
     </div>
   </div>

@@ -15,7 +15,7 @@
           {{ item.content }}
         </p>
       </div>
-      <div class="buttons">
+      <div v-if="removeButtonActive" class="buttons">
         <i
           class="fa-solid fa-trash text-danger"
           @click="deleteItem(item.id)"
@@ -29,7 +29,15 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  props: ['item'],
+  props: {
+    item: {
+      type: Object,
+    },
+    removeButtonActive: {
+      type: Boolean,
+      default: false,
+    },
+  },
   computed: {
     ...mapGetters({
       currentUser: 'users/currentUser',

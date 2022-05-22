@@ -1,6 +1,11 @@
 <template>
   <div class="row">
-    <ArticleListItem v-for="item in items" :key="item.id" :item="item" />
+    <ArticleListItem
+      v-for="item in items"
+      :removeButtonActive="removeButtonActive"
+      :key="item.id"
+      :item="item"
+    />
   </div>
 </template>
 
@@ -12,6 +17,6 @@ export default {
     ArticleListItem,
   },
 
-  props: ['items'],
+  props: ['items', 'removeButtonActive'],
 }
 </script>
