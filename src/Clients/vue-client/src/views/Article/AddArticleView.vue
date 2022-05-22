@@ -53,7 +53,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import articleService from '@/services/article'
 export default {
   computed: {
     ...mapGetters({
@@ -74,7 +73,7 @@ export default {
 
   methods: {
     onSave() {
-      articleService.add(this.userData)
+      this.$store.dispatch('articles/addItem', this.userData)
     },
   },
 }

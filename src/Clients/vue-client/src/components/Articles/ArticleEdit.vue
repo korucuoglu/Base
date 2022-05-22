@@ -1,8 +1,4 @@
 <template>
-  <pre>
-  {{ this.userData }}
-</pre
-  >
   <div class="container mt-5">
     <div class="card card-outline-secondary">
       <div class="card-body">

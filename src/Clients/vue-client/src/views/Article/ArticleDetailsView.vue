@@ -1,5 +1,5 @@
 <template>
-  <div v-if="item != null" class="container mt-5">
+  <div v-if="getArticle != null" class="container mt-5">
     <component
       :is="getComponent"
       :item="getArticle"
@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import ArticleService from '@/services/article'
 import ArticleRead from '@/components/Articles/ArticleRead'
 import ArticleEdit from '@/components/Articles/ArticleEdit'
 import { mapGetters } from 'vuex'
@@ -24,15 +23,9 @@ export default {
   },
   data() {
     return {
-      item: null,
       editMode: false,
     }
   },
-  async mounted() {
-    // this.item = await ArticleService.getById(this.$route.params.id)
-    this.item = this.$store.getters
-  },
-
   computed: {
     ...mapGetters({
       currentUser: 'users/currentUser',
@@ -42,7 +35,7 @@ export default {
       return this.getArticleById(this.$route.params.id)
     },
     isOWner() {
-      return this.item.username == this.currentUser?.username
+      return this.getArticle.username == this.currentUser?.username
     },
     getComponent() {
       return this.editMode ? 'ArticleEdit' : 'ArticleRead'
@@ -50,10 +43,7 @@ export default {
   },
   methods: {
     async Update(data) {
-      var result = await ArticleService.update(data)
-      if (result.status == 204) {
-        this.item = data
-      }
+      await this.$store.dispatch('articles/update', data)
       this.editMode = false
     },
   },

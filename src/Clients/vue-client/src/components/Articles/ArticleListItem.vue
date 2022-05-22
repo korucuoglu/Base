@@ -15,7 +15,7 @@
           {{ item.content }}
         </p>
       </div>
-      <div v-if="false" class="buttons">
+      <div class="buttons">
         <i
           class="fa-solid fa-trash text-danger"
           @click="deleteItem(item.id)"
@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import ArticleService from '@/services/article'
 import { mapGetters } from 'vuex'
 export default {
   props: ['item'],
@@ -38,7 +37,7 @@ export default {
   },
   methods: {
     deleteItem(id) {
-      ArticleService.delete(id)
+      this.$store.dispatch('articles/delete', id)
     },
   },
 }
