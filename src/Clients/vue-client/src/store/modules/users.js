@@ -22,6 +22,28 @@ export default {
         router.push({ name: 'LoginView' })
       })
     },
+    login({ commit }, data) {
+      http.post('users/login', data).then(({ data }) => {
+        function parseJwt(token) {
+          var base64Url = token.split('.')[1]
+          var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/')
+          var jsonPayload = decodeURIComponent(
+            atob(base64)
+              .split('')
+              .map(function (c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+              })
+              .join('')
+          )
+          return JSON.parse(jsonPayload)
+        }
+        const loginData = {
+          token: data.value,
+          info: parseJwt(data.value),
+        }
+        commit('setUser', loginData)
+      })
+    },
     update({ commit }, userData) {
       http.put('users', userData).then(() => {
         commit('logout')

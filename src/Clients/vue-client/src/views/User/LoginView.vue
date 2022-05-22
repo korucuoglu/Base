@@ -46,7 +46,6 @@
 </template>
 
 <script>
-import UserService from '@/services/user'
 export default {
   data: () => ({
     userData: { username: '', password: '' },
@@ -54,7 +53,7 @@ export default {
 
   methods: {
     onSubmit() {
-      UserService.login(this.userData)
+      this.$store.dispatch('users/login', this.userData)
     },
   },
 }
